@@ -95,8 +95,7 @@ Random 模块主要功能是解析配置的 random json，来生成manual json
 添加 manual_config/div/div_manual.json，执行：
 
 ```python
-python run_manual.py div  # 生成 `div` 算子的 pb 测例，默认从 manual_config 读取，保存在当前 generated_testcases 目录，可通过 --save_path 指定。
-                          #其它参数支持可以使用 -h 或 -help 来查看
+python run_manual.py div  # 生成div算子的pb测例
 ```
 
 | 运行参数        | 功能说明                                                     |
@@ -116,8 +115,13 @@ python run_manual.py div  # 生成 `div` 算子的 pb 测例，默认从 manual_
 
 ```python
 cd random2manual
-python random2manual.py div  # 生成 `div` 算子的 manual json，默认保持在 generator_manual 目录，可通过 --save_path 指定
+python random2manual.py div  # 生成div算子的manual json
 ```
+
+| 运行参数        | 功能说明                                                     |
+| --------------- | ------------------------------------------------------------ |
+| --json_path     | 手写的random json文件夹的根目录，默认值为./random_config |
+| --save_path      | 生成的 manual json文件的保存目录，默认值为./generator_manual     |
 
 random.json的demo如下:
 
