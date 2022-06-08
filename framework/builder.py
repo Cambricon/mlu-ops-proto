@@ -14,7 +14,6 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
 class Builder(ABC):
-
     def __init__(self, *args, **kwargs):
         pass
 
@@ -26,7 +25,6 @@ class Builder(ABC):
 class MluOpBuilder(Builder):
     """MluOpBuilder is used for generating cases for mluop, called by
     Director."""
-
     def __init__(self, *args, **kwargs):
         self.args_ = args[0]
         self.arg_params_ = {}
@@ -125,7 +123,6 @@ class MluOpBuilder(Builder):
 
 
 class MluOpGenerator:
-
     def __init__(self, opname_register, case_param, **kwargs):
         self.opname_register_ = opname_register
         self.tensor_param_ = case_param['tensor_params']

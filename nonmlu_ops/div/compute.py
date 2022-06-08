@@ -11,7 +11,6 @@ class DivTensorList(TensorList):
 
 @registerOp('div')
 class DivOp(OpTest):
-
     def __init__(self, tensor_list, params):
         super().__init__(tensor_list, params)
         self.output_shape_ = self.tensor_list_.getOutputTensor(0).getShape()

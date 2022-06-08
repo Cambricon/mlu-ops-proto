@@ -12,7 +12,6 @@ class ProtoRead(ABC):
     If you want to transfer some params from prototxt file to this class, you can
     write params in keyword op_params.
     """
-
     def __init__(self, proto_node, tensor_params, op_params, proto_params,
                  case):
         self.proto_node_ = proto_node
@@ -52,7 +51,7 @@ class ProtoReadFactory:
         """Get ProtoRead from Factory by name."""
         if name not in cls.registry:
             raise KeyError(
-                '[ProtoReadFactory]: own ProtoRead is not registed. please use @registerRead'
+                '[ProtoReadFactory]: own ProtoRead is not registered. please use @registerRead'
             )
         return cls.registry[name]
 
@@ -62,7 +61,6 @@ class ProtoReadFactory:
 
 
 def registerRead(op_name=''):
-
     def register(cls: ProtoRead):
         if op_name:
             ProtoReadFactory.register(op_name, cls)

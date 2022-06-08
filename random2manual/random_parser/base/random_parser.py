@@ -10,7 +10,6 @@ from random_utils.utils import *
 
 
 class RandomParser:
-
     def __init__(self, file):
         self.file = file
         self.inputs = []
@@ -224,7 +223,6 @@ class RandomParserFactory:
 
 
 def registerRandomParser(op_name=''):
-
     def register(cls: RandomParser):
         if op_name:
             RandomParserFactory.register(op_name, cls)

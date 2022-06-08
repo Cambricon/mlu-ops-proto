@@ -7,7 +7,6 @@ from .tensor import *
 
 
 class EvaluatorImpl():
-
     def __init__(self, **kwargs):
         self.dtype_ulp_ = kwargs.get('dtype_ulp', 0)
         self.is_float_diff_ = kwargs.get('is_float_diff', False)
@@ -65,7 +64,6 @@ class EvaluatorImpl():
 
 
 class Evaluator():
-
     def __init__(self,
                  base_datanode,
                  compute_datanode,
@@ -210,7 +208,6 @@ class Evaluator():
         return diff2
 
     def computeDiff3(self, rate=10.0):
-
         def computeDynamicDiff3(diff, rate):
             if diff == 0:
                 warnings.warn(
@@ -223,7 +220,6 @@ class Evaluator():
         return diff3
 
     def computeDiff3_2(self, rate=10.0):
-
         def computeDynamicDiff3_2(diff, rate):
             if diff == 0:
                 warnings.warn(

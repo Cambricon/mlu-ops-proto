@@ -3,15 +3,14 @@ import json
 from pathlib import Path
 
 from google.protobuf import text_format
-from nonmlu_ops import *
 
 from mlu_op_test_proto import mlu_op_test_pb2
+from nonmlu_ops import *
 
 
 class InputArgsParser():
     """Class for parser input args to tensor params, op params and proto
     params."""
-
     def __init__(self, args):
         self.save_txt_ = args.save_txt
         self.save_path_ = args.save_path
@@ -39,7 +38,6 @@ class InputFileParser():
         cases = parser.genCases() or
         case = parser.genCase()
     """
-
     def __init__(self,
                  filename: str,
                  file_type,
@@ -65,7 +63,6 @@ class InputFileParser():
 
 
 class InputFileParser_json(InputFileParser):
-
     def __init__(self, filename, file_type, params):
         super().__init__(filename, file_type, params)
         self.json_ = {}
@@ -188,7 +185,6 @@ class InputFileParser_json(InputFileParser):
 
 
 class InputFileParser_prototxt(InputFileParser):
-
     def __init__(self, filename, file_type, params):
         super().__init__(filename, file_type, params)
         self.parser_prototxt()

@@ -102,7 +102,6 @@ class DataNode:
     data_ use to store non complex.
     data_real_ and data_imag_ use to store complex
     """
-
     def __init__(self, dtype: str = 'unset'):
         self.dtype_ = DataType.UNSET
         self.position_ = 0
@@ -156,7 +155,6 @@ class DataNode:
 
 class DiffInfo():
     """Return value of compute diff functions of Evaluator class."""
-
     def __init__(self, real_diff, imag_diff=-1):
         if isinstance(real_diff, (int, float)):
             self.real_diff_ = real_diff
@@ -226,7 +224,6 @@ class Tensor:
     Do not modify this class for specific kernel. If you want change tensors
     behaivor, please see TensorList and inherite it.
     """
-
     def __init__(self, *args, **kwargs):
         self.name_ = kwargs.get('name', '')
         self.shape_ = [int(num) for num in kwargs.get('shape', [])]
@@ -338,7 +335,6 @@ class Tensor:
 
 class RandomData:
     """Default random data generator for TensorList."""
-
     def __init__(self, tensor: Tensor):
         self.tensor_ = tensor
 
@@ -433,13 +429,12 @@ class TensorList:
     adjusting param and generating data.
 
     Main process is in function fun.
-    See more infomation in function preProcess and generateData.
+    See more information in function preProcess and generateData.
     If you inherite this class, please use registerTensorList register it.
 
     If you want to transfer some params from json file to this class, you can
     write params in keyword tensor_params.
     """
-
     def __init__(self, params):
         self.params_ = params
         self.input_tensors_ = []
@@ -548,7 +543,6 @@ class TensorListFactory:
 
 
 def registerTensorList(op_name=''):
-
     def register(cls: TensorList):
         if op_name:
             TensorListFactory.register(op_name, cls)

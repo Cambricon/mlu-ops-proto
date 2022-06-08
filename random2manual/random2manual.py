@@ -11,7 +11,6 @@ from random_utils import utils
 class RandomGenerator:
     """MluOpBuilder is used for generating cases for MLU-OPS, called by
     Director."""
-
     def __init__(self, *args, **kwargs):
         self.args_ = args[0]
         self.file_dict_ = {}

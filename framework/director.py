@@ -2,7 +2,6 @@ from .builder import MluOpBuilder
 
 
 class Director:
-
     def __init__(self, test_type, *args, **kwargs):
         self.test_type_ = 'MluOp'
         self.args_ = args

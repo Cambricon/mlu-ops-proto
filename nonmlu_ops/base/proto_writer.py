@@ -1,15 +1,16 @@
 import os
 import struct
+import sys
 import time
 from functools import reduce
-import sys
+
 import numpy as np
+
 from mlu_op_test_proto import mlu_op_test_pb2
 from nonmlu_ops.base.tensor import *
 
 
 class str2ProtoParser():
-
     def __init__(self, proto):
         self.proto = proto
 
@@ -99,13 +100,12 @@ def writeData2File(tensor_data, tensor_data_real, tensor_data_imag, dtype_str,
 
 
 class ProtoWriter:
-
     def __init__(self, tensor_list, op_params, proto_params):
         """ProtoWriter is used for dump result to prototxt or pb file.
 
         This class will deal tensor data and public params automatically.
         If your kernel has some proto param define by yourself. You need inherite
-        this class ans rewrite function changeParam.
+        this class and rewrite function changeParam.
 
         Main process is in function dump2File.
         """
@@ -117,7 +117,7 @@ class ProtoWriter:
 
     def dump2File(self):
         """Main process of ProtoWriter, contains function dumpPublicParam2File,
-        fuction dumpTensor2File and changeParam."""
+        function dumpTensor2File and changeParam."""
         self.dumpPublicParam2Node()
         self.dumpTensor2Node()
         self.dumpOpParam2Node()
@@ -370,7 +370,6 @@ class ProtoWriter:
 
 
 class MluOpProtoWriter(ProtoWriter):
-
     def __init__(self, tensor_list, op_params, proto_params):
         super().__init__(tensor_list, op_params, proto_params)
         self.proto_node_ = mlu_op_test_pb2.Node()
@@ -406,7 +405,6 @@ class ProtoWriterFactory:
 
 
 def registerProtoWriter(op_name=''):
-
     def register(cls: ProtoWriter):
         if op_name:
             ProtoWriterFactory.register(op_name, cls)

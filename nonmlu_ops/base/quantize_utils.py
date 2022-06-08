@@ -26,10 +26,10 @@ def fillNanInf(np_value, dtype, contain_nan, contain_inf, rate=4):
         'float32': np.float32,
     }.get(dtype.getNumpyStr, np.float64)(special_value_list)
 
-    id_inf_nan = np.random.choise(np_value.size,
+    id_inf_nan = np.random.choice(np_value.size,
                                   np_value.size // rate + 1,
                                   replace=False)
-    np_value.flat[id_inf_nan] = np.random.choise(special_value_list,
+    np_value.flat[id_inf_nan] = np.random.choice(special_value_list,
                                                  id_inf_nan.size)
 
     return np_value

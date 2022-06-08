@@ -60,8 +60,8 @@ def endsWithJson(filename):
     return filename.endswith('.json')
 
 
-def endsWithPrototxt(filenname):
-    return filenname.endswith('.prototxt')
+def endsWithPrototxt(filename):
+    return filename.endswith('.prototxt')
 
 
 def filterTrue(filename):
