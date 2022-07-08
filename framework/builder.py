@@ -72,14 +72,14 @@ class MluOpBuilder(Builder):
         else:
             for op_name in self.args_.op_name:
                 op_json_path = self.args_.json_path + '/' + op_name
-                if self.args_.json_path == './manual_config':
-                    proto_writer = ProtoWriterFactory().factory(op_name)
-                    if issubclass(proto_writer, MluOpProtoWriter):
-                        op_json_path = self.args_.json_path + '/mlu_ops/' + op_name
-                    else:
-                        raise Exception(
-                            'No corresponding protoWriter is registered, please check you proto_writer!'
-                        )
+                # if self.args_.json_path == './manual_config':
+                proto_writer = ProtoWriterFactory().factory(op_name)
+                if issubclass(proto_writer, MluOpProtoWriter):
+                    op_json_path = self.args_.json_path + '/mlu_ops/' + op_name
+                else:
+                    raise Exception(
+                        'No corresponding protoWriter is registered, please check you proto_writer!'
+                    )
                 op_file_dict = {}.fromkeys(
                     utils.getJsonFileFromDir(op_json_path), op_name)
                 self.file_dict_.update(op_file_dict)

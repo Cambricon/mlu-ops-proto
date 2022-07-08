@@ -18,6 +18,8 @@ class RoiCropForwardOp(OpTest):
         self.input_shape_ = self.tensor_list_.getInputTensor(0).getShape()
         self.grid_shape_ = self.tensor_list_.getInputTensor(1).getShape()
         self.out_tensor = self.tensor_list_.getOutputTensor(0).getShape()
+        print("input_shape: ", self.input_shape_)
+        print("grid_shape", self.grid_shape_)
 
     def compute(self):
         input_tensor = self.tensor_list_.getInputTensor(0)
