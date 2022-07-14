@@ -56,7 +56,7 @@
       "inputs":[
         {"shape":[64,32,32,5000],"random_distribution":{"uniform":[-10,10]},"layout":"NHWC"},
         {"shape":[64,5,5,2],"random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"}],
-      "outputs":[{"shape":[64,15,15,5000],"random_distribution":{"uniform":[-10,10]},"layout":"NHWC"}],
+      "outputs":[{"shape":[64,5,5,5000],"random_distribution":{"uniform":[-10,10]},"layout":"NHWC"}],
       "proto_params":{"write_data":true, "large_tensor": true}
     },
     {
