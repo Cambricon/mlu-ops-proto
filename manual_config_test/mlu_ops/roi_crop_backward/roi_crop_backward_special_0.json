@@ -1,0 +1,39 @@
+{
+    "op_name":"roi_crop_backward",
+    "device":"gpu",
+    "data_type":{"input_dtype":["float32","float32"], "output_dtype":["float32"]},
+    "random_distribution":{"uniform":[-10,10]},
+    "require_value":true,
+    "evaluation_criterion":["diff1","diff2"],
+    "evaluation_threshold":[0.003,0.003],
+    "manual_data":[
+        {
+          "inputs":[
+            {"shape":[14,3,1,1],"random_distribution":{"uniform":[0,0]},"layout":"NHWC"},
+            {"shape":[14,3,1,2],"random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"}],
+          "outputs":[{"shape":[2,5,5,1],"random_distribution":{"uniform":[-10,10]},"layout":"NHWC"}],
+          "proto_params":{"write_data":true}
+        },
+        {
+          "inputs":[
+            {"shape":[14,3,1,1],"random_distribution":{"gaussian":[0,1]},"layout":"NHWC"},
+            {"shape":[14,3,1,2],"random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"}],
+          "outputs":[{"shape":[1,5,5,1],"random_distribution":{"uniform":[-10,10]},"layout":"NHWC"}],
+          "proto_params":{"write_data":true}
+        },
+        {
+          "inputs":[
+            {"shape":[14,3,1,1],"random_distribution":{"gaussian":[-0.25,1]},"layout":"NHWC"},
+            {"shape":[14,3,1,2],"random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"}],
+          "outputs":[{"shape":[1,5,5,1],"random_distribution":{"uniform":[-10,10]},"layout":"NHWC"}],
+          "proto_params":{"write_data":true}
+        },
+        {
+          "inputs":[
+            {"shape":[14,3,2,1],"random_distribution":{"gaussian":[0,5]},"layout":"NHWC"},
+            {"shape":[14,3,2,2],"random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"}],
+          "outputs":[{"shape":[1,5,5,1],"random_distribution":{"uniform":[-10,10]},"layout":"NHWC"}],
+          "proto_params":{"write_data":true}
+        }
+    ]
+}
