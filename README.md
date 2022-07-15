@@ -9,7 +9,7 @@
 
 ### 2. Manual 模块介绍
 
-- #### MluOpBuilder
+- #### MluOpBuilder..
 
 MluOpBuilder 负责构建整个流程，会调用 input_parser 模块解析 json 文件生成测试用例的参数信息，然后调用 MluOpGenerator 模块生成 baseline 。
 
