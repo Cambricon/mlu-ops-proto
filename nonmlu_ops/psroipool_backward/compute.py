@@ -136,6 +136,7 @@ class PsRoiPooBackwardlOp(OpTest):
         psroi_pooling.psroi_pooling_backward_cuda(pooled_height, pooled_width, spatial_scale, output_dim, topGrad_tensor_trans, torch_roi_tensor, bottomGrad_data, mappingChannel_tensor_trans)
         bottomGrad_result = bottomGrad_data.permute(0, 2, 3, 1)
         bottomGrad_node.setData(bottomGrad_result.cpu())
+        print("roi_num = {0}, pooled_height = {1}, pooled_width = {2}, output_dim = {3}, batch = {4}, height = {5}, width = {6}.....done".format(rois_num, pooled_height, pooled_width, output_dim, batch, height, width))
 
 @registerProtoWriter("psroipool_backward")
 class PsRoiPoolBackwardProtoWriter(MluOpProtoWriter):

@@ -55,15 +55,15 @@
         "proto_params": {"write_data": true}        
       },
       { 
-        "inputs": [{"shape": [2, 80, 80, 30], "dtype": "float32", 
+        "inputs": [{"shape": [2, 80, 80, 1], "dtype": "float32", 
                      "random_distribution": {"uniform": [-100, 100]}, "layout": "NHWC"},
-                   {"shape": [2, 80, 80, 30], "dtype": "int32", 
+                   {"shape": [2, 80, 80, 1], "dtype": "int32", 
                      "random_distribution": {"uniform": [0, 100]}, "layout": "NHWC"},
                    {"shape": [2, 5], "dtype": "float32", 
                     "random_distribution": {"uniform": [0, 50]}, "layout": "ARRAY"}],
-        "outputs": [{"shape": [1, 151, 115, 192000], "dtype": "float32", 
+        "outputs": [{"shape": [1, 15, 11, 6400], "dtype": "float32", 
                      "layout": "NHWC"}],
-        "op_params": {"spatial_scale": 0.05, "output_dim": 30, "pooled_height": 80, "pooled_width": 80},
+        "op_params": {"spatial_scale": 0.05, "output_dim": 1, "pooled_height": 80, "pooled_width": 80},
         "proto_params": {"write_data": true}        
       },
       { 
@@ -121,7 +121,7 @@
                      "random_distribution": {"uniform": [0, 100]}, "layout": "NHWC"},
                    {"shape": [2000, 5], "dtype": "float32", 
                     "random_distribution": {"uniform": [0, 50]}, "layout": "ARRAY"}],
-        "outputs": [{"shape": [2, 2, 2, 12], "dtype": "float32", 
+        "outputs": [{"shape": [2, 2, 2, 3], "dtype": "float32", 
                      "layout": "NHWC"}],
         "op_params": {"spatial_scale": 0.0625, "output_dim": 3, "pooled_height": 1, "pooled_width": 1},
         "proto_params": {"write_data": true}        
@@ -147,7 +147,7 @@
                     "random_distribution": {"uniform": [0, 50]}, "layout": "ARRAY"}],
         "outputs": [{"shape": [10, 5, 5, 1200], "dtype": "float32", 
                      "layout": "NHWC"}],
-        "op_params": {"spatial_scale": 0.06, "output_dim": 3, "pooled_height": 2, "pooled_width": 2},
+        "op_params": {"spatial_scale": 0.06, "output_dim": 300, "pooled_height": 2, "pooled_width": 2},
         "proto_params": {"write_data": true}        
       },
       { 
@@ -331,15 +331,15 @@
         "proto_params": {"write_data": true}        
       },
       { 
-        "inputs": [{"shape": [50, 2, 2, 10], "dtype": "float32", 
+        "inputs": [{"shape": [50, 2, 2, 100], "dtype": "float32", 
                      "random_distribution": {"uniform": [-100, 100]}, "layout": "NHWC"},
-                   {"shape": [50, 2, 2, 10], "dtype": "int32", 
+                   {"shape": [50, 2, 2, 100], "dtype": "int32", 
                      "random_distribution": {"uniform": [0, 100]}, "layout": "NHWC"},
                    {"shape": [50, 5], "dtype": "float32", 
                     "random_distribution": {"uniform": [0, 50]}, "layout": "ARRAY"}],
         "outputs": [{"shape": [1, 5, 5, 400], "dtype": "float32", 
                      "layout": "NHWC"}],
-        "op_params": {"spatial_scale": 0.065, "output_dim": 10, "pooled_height": 2, "pooled_width": 2},
+        "op_params": {"spatial_scale": 0.065, "output_dim": 100, "pooled_height": 2, "pooled_width": 2},
         "proto_params": {"write_data": true}        
       },
       { 
