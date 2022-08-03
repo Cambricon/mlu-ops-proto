@@ -12,7 +12,7 @@
                     "random_distribution": {"uniform": [0, 4]}, "layout": "ARRAY"}],
         "outputs": [{"shape": [1, 2, 2, 2], "dtype": "float32", "layout": "NHWC"},
                     {"shape": [1, 2, 2, 2], "dtype": "int32", "layout": "NHWC"}],
-        "op_params": {"spatial_scale": 1, "group_size": 2, "output_dim": 2, "pooled_height": 2, "pooled_width": 2},
+        "op_params": {"spatial_scale": 1, "group_size": 2},
         "proto_params": {"write_data": true}        
       },
       { 
@@ -24,7 +24,7 @@
                      "layout": "NHWC"},
                      {"shape": [320, 9, 9, 80], "dtype": "int32", 
                       "layout": "NHWC"}],
-        "op_params": {"spatial_scale": 1, "group_size": 9, "output_dim": 80, "pooled_height": 9, "pooled_width": 9},
+        "op_params": {"spatial_scale": 1, "group_size": 9},
         "proto_params": {"write_data": true}        
       },
       { 
@@ -36,7 +36,7 @@
                      "layout": "NHWC"},
                      {"shape": [320, 20, 20, 8], "dtype": "int32", 
                       "layout": "NHWC"}],
-        "op_params": {"spatial_scale": 0.0625, "group_size": 20, "output_dim": 8, "pooled_height": 20, "pooled_width": 20},
+        "op_params": {"spatial_scale": 0.0625, "group_size": 20},
         "proto_params": {"write_data": true}        
       },
       { 
@@ -48,7 +48,7 @@
                      "layout": "NHWC"},
                      {"shape": [446, 11, 11, 80], "dtype": "int32", 
                       "layout": "NHWC"}],
-        "op_params": {"spatial_scale": 0.0625, "group_size": 11,"output_dim": 80, "pooled_height": 11, "pooled_width": 11},
+        "op_params": {"spatial_scale": 0.0625, "group_size": 11},
         "proto_params": {"write_data": true}        
       },
       { 
@@ -60,7 +60,7 @@
                      "layout": "NHWC"},
                      {"shape": [446, 3, 3, 21], "dtype": "int32", 
                       "layout": "NHWC"}],
-        "op_params": {"spatial_scale": 0.0625, "group_size": 3, "output_dim": 21, "pooled_height": 3, "pooled_width": 3},
+        "op_params": {"spatial_scale": 0.0625, "group_size": 3},
         "proto_params": {"write_data": true}        
       },
       { 
@@ -72,7 +72,7 @@
                      "layout": "NHWC"},
                      {"shape": [297, 7, 7, 8], "dtype": "int32", 
                       "layout": "NHWC"}],
-        "op_params": {"spatial_scale": 0.0625, "group_size": 7,"output_dim": 8, "pooled_height": 7, "pooled_width": 7},
+        "op_params": {"spatial_scale": 0.0625, "group_size": 7},
         "proto_params": {"write_data": true}        
       },
       { 
@@ -84,7 +84,7 @@
                      "layout": "NHWC"},
                      {"shape": [76, 7, 7, 21], "dtype": "int32", 
                       "layout": "NHWC"}],
-        "op_params": {"spatial_scale": 0.0625, "group_size": 7, "output_dim": 21, "pooled_height": 7, "pooled_width": 7},
+        "op_params": {"spatial_scale": 0.0625, "group_size": 7},
         "proto_params": {"write_data": true}        
       },
       { 
@@ -96,7 +96,7 @@
                      "layout": "NHWC"},
                      {"shape": [292, 5, 5, 21], "dtype": "int32", 
                       "layout": "NHWC"}],
-        "op_params": {"spatial_scale": 0.0625, "group_size": 5, "output_dim": 21, "pooled_height": 5, "pooled_width": 5},
+        "op_params": {"spatial_scale": 0.0625, "group_size": 5},
         "proto_params": {"write_data": true}        
       },
       { 
@@ -108,7 +108,7 @@
                      "layout": "NHWC"},
                      {"shape": [132, 7, 7, 8], "dtype": "int32", 
                       "layout": "NHWC"}],
-        "op_params": {"spatial_scale": 0.0625, "group_size": 7, "output_dim": 8, "pooled_height": 7, "pooled_width": 7},
+        "op_params": {"spatial_scale": 0.0625, "group_size": 7},
         "proto_params": {"write_data": true}        
       },
       { 
@@ -120,7 +120,7 @@
                      "layout": "NHWC"},
                      {"shape": [311, 7, 7, 21], "dtype": "int32", 
                       "layout": "NHWC"}],
-        "op_params": {"spatial_scale": 0.0625, "group_size": 7, "output_dim": 21, "pooled_height": 7, "pooled_width": 7},
+        "op_params": {"spatial_scale": 0.0625, "group_size": 7},
         "proto_params": {"write_data": true}        
       },
       { 
@@ -132,7 +132,7 @@
                      "layout": "NHWC"},
                      {"shape": [143, 5, 5, 21], "dtype": "int32", 
                       "layout": "NHWC"}],
-        "op_params": {"spatial_scale": 0.0625, "group_size": 5, "output_dim": 21, "pooled_height": 5, "pooled_width": 5},
+        "op_params": {"spatial_scale": 0.0625, "group_size": 5},
         "proto_params": {"write_data": true}        
       },
       {
@@ -144,7 +144,7 @@
                       "layout": "NHWC"},
                       {"shape": [482, 5, 5, 8], "dtype": "int32",
                         "layout": "NHWC"}],
-        "op_params": {"spatial_scale": 0.0625, "group_size": 5, "output_dim": 8, "pooled_height": 5, "pooled_width": 5},
+        "op_params": {"spatial_scale": 0.0625, "group_size": 5},
         "proto_params": {"write_data": true}
       },
       {
@@ -156,7 +156,7 @@
                       "layout": "NHWC"},
                       {"shape": [366, 3, 3, 21], "dtype": "int32",
                         "layout": "NHWC"}],
-         "op_params": {"spatial_scale": 0.0625, "group_size": 3, "output_dim": 21, "pooled_height": 3, "pooled_width": 3},
+         "op_params": {"spatial_scale": 0.0625, "group_size": 3},
          "proto_params": {"write_data": true}
       },
       {
@@ -168,7 +168,7 @@
                       "layout": "NHWC"},
                       {"shape": [213, 3, 3, 8], "dtype": "int32",
                         "layout": "NHWC"}],
-         "op_params": {"spatial_scale": 0.0625, "group_size": 3, "output_dim": 8, "pooled_height": 3, "pooled_width": 3},
+         "op_params": {"spatial_scale": 0.0625, "group_size": 3},
          "proto_params": {"write_data": true}
       },
       {
@@ -180,7 +180,7 @@
                       "layout": "NHWC"},
                       {"shape": [359, 7, 7, 21], "dtype": "int32",
                         "layout": "NHWC"}],
-         "op_params": {"spatial_scale": 0.0625, "group_size": 7, "output_dim": 21, "pooled_height": 7, "pooled_width": 7},
+         "op_params": {"spatial_scale": 0.0625, "group_size": 7},
          "proto_params": {"write_data": true}
       },
       {
@@ -192,7 +192,7 @@
                       "layout": "NHWC"},
                       {"shape": [477, 7, 7, 21], "dtype": "int32",
                         "layout": "NHWC"}],
-         "op_params": {"spatial_scale": 0.0625, "group_size": 7, "output_dim": 21, "pooled_height": 7, "pooled_width": 7},
+         "op_params": {"spatial_scale": 0.0625, "group_size": 7},
          "proto_params": {"write_data": true}
       },
       {
@@ -204,7 +204,7 @@
                       "layout": "NHWC"},
                       {"shape": [232, 5, 5, 8], "dtype": "int32",
                         "layout": "NHWC"}],
-         "op_params": {"spatial_scale": 0.0625, "group_size": 5, "output_dim": 8, "pooled_height": 5, "pooled_width": 5},
+         "op_params": {"spatial_scale": 0.0625, "group_size": 5},
          "proto_params": {"write_data": true}
       },
       {
@@ -216,7 +216,7 @@
                       "layout": "NHWC"},
                       {"shape": [402, 3, 3, 21], "dtype": "int32",
                         "layout": "NHWC"}],
-         "op_params": {"spatial_scale": 0.0625, "group_size": 3, "output_dim": 21, "pooled_height": 3, "pooled_width": 3},
+         "op_params": {"spatial_scale": 0.0625, "group_size": 3},
          "proto_params": {"write_data": true}
       },
       {
@@ -228,7 +228,7 @@
                       "layout": "NHWC"},
                       {"shape": [96, 5, 5, 8], "dtype": "int32",
                         "layout": "NHWC"}],
-         "op_params": {"spatial_scale": 0.0625, "group_size": 5, "output_dim": 8, "pooled_height": 5, "pooled_width": 5},
+         "op_params": {"spatial_scale": 0.0625, "group_size": 5},
          "proto_params": {"write_data": true}
       },
       {
@@ -240,7 +240,7 @@
                       "layout": "NHWC"},
                       {"shape": [400, 5, 5, 8], "dtype": "int32",
                         "layout": "NHWC"}],
-         "op_params": {"spatial_scale": 0.0625, "group_size": 5, "output_dim": 8, "pooled_height": 5, "pooled_width": 5},
+         "op_params": {"spatial_scale": 0.0625, "group_size": 5},
          "proto_params": {"write_data": true}
       },
       {
@@ -252,7 +252,7 @@
                       "layout": "NHWC"},
                       {"shape": [28, 7, 7, 21], "dtype": "int32",
                         "layout": "NHWC"}],
-         "op_params": {"spatial_scale": 0.0625, "group_size": 7, "output_dim": 21, "pooled_height": 7, "pooled_width": 7},
+         "op_params": {"spatial_scale": 0.0625, "group_size": 7},
          "proto_params": {"write_data": true}
       },
       {
@@ -264,7 +264,7 @@
                       "layout": "NHWC"},
                       {"shape": [489, 7, 7, 8], "dtype": "int32",
                         "layout": "NHWC"}],
-         "op_params": {"spatial_scale": 0.0625, "group_size": 7, "output_dim": 8, "pooled_height": 7, "pooled_width": 7},
+         "op_params": {"spatial_scale": 0.0625, "group_size": 7},
          "proto_params": {"write_data": true}
       }
     ]

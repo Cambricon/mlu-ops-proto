@@ -14,7 +14,7 @@
                        "layout": "NHWC"},
                        {"shape": [297, 10, 10, 800], "dtype": "int32", 
                         "layout": "NHWC"}],
-          "op_params": {"spatial_scale": 0.5, "group_size": 10, "output_dim": 800, "pooled_height": 10, "pooled_width": 10},
+          "op_params": {"spatial_scale": 0.5, "group_size": 10},
           "proto_params": {"write_data": true}        
         },
         { 
@@ -26,7 +26,7 @@
                        "layout": "NHWC"},
                        {"shape": [76, 7, 7, 2100], "dtype": "int32", 
                         "layout": "NHWC"}],
-          "op_params": {"spatial_scale": 0.05, "group_size": 7, "output_dim": 2100, "pooled_height": 7, "pooled_width": 7},
+          "op_params": {"spatial_scale": 0.05, "group_size": 7},
           "proto_params": {"write_data": true}        
         },
         { 
@@ -38,7 +38,7 @@
                        "layout": "NHWC"},
                        {"shape": [292, 5, 5, 2100], "dtype": "int32", 
                         "layout": "NHWC"}],
-          "op_params": {"spatial_scale": 0.25, "group_size": 5,"output_dim": 2100, "pooled_height": 5, "pooled_width": 5},
+          "op_params": {"spatial_scale": 0.25, "group_size": 5},
           "proto_params": {"write_data": true}        
         },
       {
@@ -50,7 +50,7 @@
                       "layout": "NHWC"},
                       {"shape": [28, 7, 7, 10000], "dtype": "int32",
                         "layout": "NHWC"}],
-         "op_params": {"spatial_scale": 0.065, "group_size": 7, "output_dim": 10000, "pooled_height": 7, "pooled_width": 7},
+         "op_params": {"spatial_scale": 0.065, "group_size": 7},
          "proto_params": {"write_data": true}
       },
       {
@@ -62,7 +62,7 @@
                       "layout": "NHWC"},
                       {"shape": [400, 5, 5, 8000], "dtype": "int32",
                         "layout": "NHWC"}],
-         "op_params": {"spatial_scale": 5.0, "group_size": 5, "output_dim": 8000, "pooled_height": 5, "pooled_width": 5},
+         "op_params": {"spatial_scale": 5.0, "group_size": 5},
          "proto_params": {"write_data": true}
       },
       {
@@ -74,7 +74,7 @@
                       "layout": "NHWC"},
                       {"shape": [489, 7, 7, 800], "dtype": "int32",
                         "layout": "NHWC"}],
-         "op_params": {"spatial_scale": 0.5, "group_size": 7, "output_dim": 800, "pooled_height": 7, "pooled_width": 7},
+         "op_params": {"spatial_scale": 0.5, "group_size": 7},
          "proto_params": {"write_data": true}
       }
     ]
