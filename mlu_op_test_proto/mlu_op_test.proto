@@ -1,3 +1,25 @@
+/*************************************************************************
+ * Copyright (C) [2022] by Cambricon, Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included
+ * in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ * CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *************************************************************************/
 syntax = "proto2";
 package mluoptest;
 
@@ -73,8 +95,8 @@ message Tensor {
   optional DataType onchip_dtype  = 13;
 
   optional int32 position         = 5;
-  optional float scale            = 6;
-  optional int32 offset           = 14;
+  optional float scale            = 6;     
+  optional int32 offset           = 14;    
 
   // data
   repeated float value_f          = 7;
@@ -157,7 +179,7 @@ message TestParam {
   repeated EvaluationCriterion error_func = 1;
   repeated double error_threshold         = 2;
   repeated double error_threshold_imag    = 3;
-
+  
   optional double latency                 = 5;    //   latency
   optional double efficiency              = 6;    //   efficiency
   optional Device baseline_device         = 7;
@@ -166,6 +188,18 @@ message TestParam {
 enum ComputationPreference {
   COMPUTATION_FAST            = 0;
   COMPUTATION_HIGH_PRECISION  = 1;
+}
+
+// param to call mluopSetQuantizeRoundMode()/mluopGetQuantizeRoundMode()
+enum QuantizeRoundMode {
+  ROUND_TO_EVEN = 0;
+  ROUND_HALF_UP = 1;
+  ROUND_OFF_ZERO = 2;
+}
+
+// some params for handle
+message HandleParam {
+  optional QuantizeRoundMode round_mode = 1 [default = ROUND_OFF_ZERO];
 }
 
 enum mluOpLogBase {
