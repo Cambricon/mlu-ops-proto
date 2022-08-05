@@ -142,7 +142,7 @@ message Node {
   optional SqrtParam   sqrt_param                     = 4003;  // param
   optional PsRoiPoolForwardParam psroipool_forward_param = 4004; //param
   optional PsRoiPoolBackwardParam psroipool_backward_param  = 4005;  //param
-  optional PolyNmsParam    poly_nms_param             = 4010;   // PolyNmsParam
+  optional PolyNmsParam poly_nms_param                = 4010;   // PolyNmsParam
 }
 
 
