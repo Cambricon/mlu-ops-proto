@@ -110,10 +110,10 @@ class PolyNmsOp(OpTest):
 
         if (dtype == DataType.FLOAT32):
             boxes = boxes1.to(torch.float32).cuda()
-            keep =  poly_nms_cuda.poly_nms(boxes, iou_thresh)
+            keep = poly_nms_cuda.poly_nms(boxes, iou_thresh)
             dims = out_tensor.getShape()[0]
             result = keep.cpu().numpy()
-            real_dims=keep.shape[0]
+            real_dims = keep.shape[0]
             real_dims = dims - real_dims
             result = np.pad(result,(0,real_dims),'constant',constant_values=(0,0))
             out_tensor.setData(result)
