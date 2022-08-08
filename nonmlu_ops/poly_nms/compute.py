@@ -15,98 +15,54 @@ class PolyNmsOp(OpTest):
     def __init__(self, tensor_list, params):
         super().__init__(tensor_list, params)
         self.iou_threshold = self.params_.get("iou_threshold", 0.2)
-
         print("__init polynms")
         print(self.iou_threshold)
 
-    def createCase(self, is_cw, is_convex):
+    def createCWCase(self):
+        print("clock wise case.")
         np_boxes = self.tensor_list_.getInputTensor(0).getData()
         boxes = torch.from_numpy(np_boxes)
-        if (is_cw and is_convex):
-            print("is clockwise and isconvex.")
-            for i in range(boxes.shape[0]):
-                boxes[i][0] = random.uniform(0, 50)
-                boxes[i][1] = random.uniform(50, 100)
-                boxes[i][2] = random.uniform(100, 150)
-                boxes[i][3] = random.uniform(-50, 0)
-                boxes[i][4] = random.uniform(-50, 1)
-                boxes[i][5] = random.uniform(-150, -100)
-                boxes[i][6] = random.uniform(-150, -100)
-                boxes[i][7] = random.uniform(1, 50)
-                boxes[i][8] = random.uniform(-100, 100)
-            return boxes
-        elif (is_cw and not(is_convex)):
-            print("is clockwise and not is convex.")
-            for i in range(boxes.shape[0]):
-                if i%2 == 0:
-                    boxes[i][0] = random.uniform(-100,-10)
-                    boxes[i][1] = random.uniform(50, 100)
-                    boxes[i][2] = random.uniform(50, 100)
-                    boxes[i][3] = random.uniform(-2, -1)
-                    boxes[i][4] = random.uniform(-100, -20)
-                    boxes[i][5] = random.uniform(-100, -50)
-                    boxes[i][6] = random.uniform(0, 20)
-                    boxes[i][7] = random.uniform(-2, 2)
-                    boxes[i][8] = random.uniform(-100, 100)
-                else:
-                    boxes[i][0] = random.uniform(10,140)
-                    boxes[i][1] = random.uniform(-5, 5)
-                    boxes[i][2] = random.uniform(180, 250)
-                    boxes[i][3] = random.uniform(50, 100)
-                    boxes[i][4] = random.uniform(150, 170)
-                    boxes[i][5] = random.uniform(-2, 2)
-                    boxes[i][6] = random.uniform(180, 250)
-                    boxes[i][7] = random.uniform(-100, -50)
-                    boxes[i][8] = random.uniform(-100, 100)
-            return boxes
-        elif (not(is_cw) and is_convex):
-            print("not is clockwise and is convex.")
-            for i in range(boxes.shape[0]):
-                boxes[i][0] = random.uniform(-150, -100)
-                boxes[i][1] = random.uniform(1, 50)
-                boxes[i][2] = random.uniform(-50, 1)
-                boxes[i][3] = random.uniform(-150, -100)
-                boxes[i][4] = random.uniform(100, 150)
-                boxes[i][5] = random.uniform(-50, 0)
-                boxes[i][6] = random.uniform(0, 50)
-                boxes[i][7] = random.uniform(50, 100)
-                boxes[i][8] = random.uniform(-100, 100)
-            return boxes
-        elif (not(is_cw) and not(is_convex)):
-            print("not is clockwise and not is convex.")
-            for i in range(boxes.shape[0]):
-                if i%2 == 0:
-                    boxes[i][0] = random.uniform(0, 20)
-                    boxes[i][1] = random.uniform(-2, 2)
-                    boxes[i][2] = random.uniform(-100, -20)
-                    boxes[i][3] = random.uniform(-100, -50)
-                    boxes[i][4] = random.uniform(50, 100)
-                    boxes[i][5] = random.uniform(-2, -1)
-                    boxes[i][6] = random.uniform(-100,-10)
-                    boxes[i][7] = random.uniform(50, 100)
-                    boxes[i][8] = random.uniform(-100, 100)
-                else:
-                    boxes[i][0] = random.uniform(180, 250)
-                    boxes[i][1] = random.uniform(-100, -50)
-                    boxes[i][2] = random.uniform(150, 170)
-                    boxes[i][3] = random.uniform(-2, 2)
-                    boxes[i][4] = random.uniform(180, 250)
-                    boxes[i][5] = random.uniform(50, 100)
-                    boxes[i][6] = random.uniform(10, 140)
-                    boxes[i][7] = random.uniform(-10, 10)
-                    boxes[i][8] = random.uniform(-100, 100)
-            return boxes
-  
+        up_bound = 10000000
+        for i in range(boxes.shape[0]): 
+            boxes[i][0] = random.uniform(0, up_bound)
+            boxes[i][1] = random.uniform(0, up_bound)
+            boxes[i][2] = random.uniform(0, up_bound)
+            boxes[i][3] = random.uniform(0, -up_bound)
+            boxes[i][4] = random.uniform(-up_bound, 0)
+            boxes[i][5] = random.uniform(-up_bound, 0)
+            boxes[i][6] = random.uniform(-up_bound, 0)
+            boxes[i][7] = random.uniform(0, up_bound)
+            boxes[i][8] = random.uniform(-up_bound, up_bound)
+        return boxes
+    
+    def createCCWCase(self):
+        print("counter clock wise case.")
+        np_boxes = self.tensor_list_.getInputTensor(0).getData()
+        boxes = torch.from_numpy(np_boxes)
+        up_bound = 10000000
+        for i in range(boxes.shape[0]): 
+            boxes[i][0] = random.uniform(0, up_bound)
+            boxes[i][1] = random.uniform(0, up_bound)
+            boxes[i][2] = random.uniform(-up_bound, 0)
+            boxes[i][3] = random.uniform(0, up_bound)
+            boxes[i][4] = random.uniform(-up_bound, 0)
+            boxes[i][5] = random.uniform(-up_bound, 0)
+            boxes[i][6] = random.uniform(0, up_bound)
+            boxes[i][7] = random.uniform(-up_bound, 0)
+            boxes[i][8] = random.uniform(-up_bound, up_bound)
+        return boxes
+
     def compute(self):
         dtype = self.tensor_list_.getInputTensor(0).getDataType()
         np_boxes = self.tensor_list_.getInputTensor(0).getData()
         iou_thresh = self.iou_threshold
-        is_convex = True
-        is_clockwise = True
-
         out_tensor = self.tensor_list_.getOutputTensor(0)
         out_tensor_length = self.tensor_list_.getOutputTensor(1)
-        boxes1 = self.createCase(is_clockwise, is_convex)
+
+        if iou_thresh * 10 % 2 == 0:
+            boxes1 = self.createCWCase()
+        else:
+            boxes1 = self.createCCWCase()
 
         if (dtype == DataType.FLOAT32):
             boxes = boxes1.to(torch.float32).cuda()
@@ -128,5 +84,3 @@ class OpTensorProtoWriter(MluOpProtoWriter):
     def dumpOpParam2Node(self):
         param_node = self.proto_node_.poly_nms_param
         param_node.iou_threshold = self.op_params_.get("iou_threshold", 0.1)
-
-

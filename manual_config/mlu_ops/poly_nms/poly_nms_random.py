@@ -47,7 +47,7 @@ def genCase():
     param = [n, iou_threshold, up_limit,bottom_limit]
 
     cur_res += genSingleCase(params_list=param)
-    for i in range(25):
+    for i in range(100):
         n = np.random.randint(100,500)
         iou_threshold = np.random.randint(1,100)/100
         up_limit = np.random.randint(1,500)
