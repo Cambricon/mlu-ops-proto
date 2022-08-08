@@ -113,15 +113,8 @@ class PolyNmsOp(OpTest):
             keep =  poly_nms_cuda.poly_nms(boxes, iou_thresh)
             dims = out_tensor.getShape()[0]
             result = keep.cpu().numpy()
-            print('input shape\n')
-            print(dims)
-
             real_dims=keep.shape[0]
-            print(real_dims)
-
             real_dims = dims - real_dims
-            print(real_dims)
-
             result = np.pad(result,(0,real_dims),'constant',constant_values=(0,0))
             out_tensor.setData(result)
 
