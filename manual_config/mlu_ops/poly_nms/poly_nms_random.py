@@ -40,35 +40,42 @@ def genSingleCase(dtype='float32', params_list=[1,1,1,1]):
 
 def genCase():
     cur_res = '     "manual_data":[\n'
-    n = np.random.randint(1,100)
+    n = np.random.randint(1,50)
     iou_threshold = np.random.randint(1,100)/100
     up_limit = np.random.randint(1,50)
     bottom_limit = np.random.randint(-50,0)
     param = [n, iou_threshold, up_limit,bottom_limit]
 
     cur_res += genSingleCase(params_list=param)
-    for i in range(100):
-        n = np.random.randint(100,500)
+    for i in range(80):
+        n = np.random.randint(1,50)
         iou_threshold = np.random.randint(1,100)/100
-        up_limit = np.random.randint(1,500)
-        bottom_limit = np.random.randint(-500,0)
+        up_limit = np.random.randint(1,100)
+        bottom_limit = np.random.randint(-100,0)
         param = [n,iou_threshold,up_limit,bottom_limit]
 
         cur_res += ',\n' + genSingleCase(params_list=param)
+        if i % 2 == 0:
+            n = np.random.randint(50,500)
+            iou_threshold = np.random.randint(1,100)/100
+            up_limit = np.random.randint(0,1000)
+            bottom_limit = np.random.randint(-1000,0)
+            param = [n,iou_threshold,up_limit,bottom_limit]
+            cur_res += ',\n' + genSingleCase(params_list=param)
+
         if i % 3 == 0:
             n = np.random.randint(500,1000)
             iou_threshold = np.random.randint(1,100)/100
-            up_limit = np.random.randint(0,1000)
+            up_limit = np.random.randint(0,5000)
             bottom_limit = np.random.randint(-5000,0)
             param = [n,iou_threshold,up_limit,bottom_limit]
             cur_res += ',\n' + genSingleCase(params_list=param)
             
-        if i%4 == 0:
+        if i % 5 == 0:
             n = np.random.randint(1000,2000)
             iou_threshold = np.random.randint(1,100)/100
-            up_limit = np.random.randint(1,2000)
-            bottom_limit = np.random.randint(-2000, 0)
-
+            up_limit = np.random.randint(0,10000000)
+            bottom_limit = np.random.randint(-10000000, 0)
             param = [n,iou_threshold,up_limit,bottom_limit]
             cur_res += ',\n' + genSingleCase(params_list=param)
     cur_res += '\n     ]\n}'

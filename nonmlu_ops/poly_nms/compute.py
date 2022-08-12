@@ -18,54 +18,58 @@ class PolyNmsOp(OpTest):
         print("__init polynms")
         print(self.iou_threshold)
 
-    def createCWCase(self):
-        print("clock wise case.")
+    def createRandomOrderCase(self):
+        distribution, random_range = next(iter(self.tensor_list_.getInputTensor(0).random_distribution_.items()))
+        start = random_range[0]
+        end = random_range[1]
+        width = (end - start) / 2
+        mid = start + width
+
         np_boxes = self.tensor_list_.getInputTensor(0).getData()
         boxes = torch.from_numpy(np_boxes)
-        up_bound = 10000000
-        for i in range(boxes.shape[0]): 
-            boxes[i][0] = random.uniform(0, up_bound)
-            boxes[i][1] = random.uniform(0, up_bound)
-            boxes[i][2] = random.uniform(0, up_bound)
-            boxes[i][3] = random.uniform(0, -up_bound)
-            boxes[i][4] = random.uniform(-up_bound, 0)
-            boxes[i][5] = random.uniform(-up_bound, 0)
-            boxes[i][6] = random.uniform(-up_bound, 0)
-            boxes[i][7] = random.uniform(0, up_bound)
-            boxes[i][8] = random.uniform(-up_bound, up_bound)
-        return boxes
-    
-    def createCCWCase(self):
-        print("counter clock wise case.")
-        np_boxes = self.tensor_list_.getInputTensor(0).getData()
-        boxes = torch.from_numpy(np_boxes)
-        up_bound = 10000000
-        for i in range(boxes.shape[0]): 
-            boxes[i][0] = random.uniform(0, up_bound)
-            boxes[i][1] = random.uniform(0, up_bound)
-            boxes[i][2] = random.uniform(-up_bound, 0)
-            boxes[i][3] = random.uniform(0, up_bound)
-            boxes[i][4] = random.uniform(-up_bound, 0)
-            boxes[i][5] = random.uniform(-up_bound, 0)
-            boxes[i][6] = random.uniform(0, up_bound)
-            boxes[i][7] = random.uniform(-up_bound, 0)
-            boxes[i][8] = random.uniform(-up_bound, up_bound)
+        for i in range(boxes.shape[0]):
+            if i % 2 == 0:
+                # print("clock wise case.")
+                boxes[i][0] = random.uniform(mid, end)
+                boxes[i][1] = random.uniform(mid, end)
+
+                boxes[i][2] = random.uniform(mid, end)
+                boxes[i][3] = random.uniform(start, mid)
+
+                boxes[i][4] = random.uniform(start, mid)
+                boxes[i][5] = random.uniform(start, mid)
+
+                boxes[i][6] = random.uniform(start, mid)
+                boxes[i][7] = random.uniform(mid, end)
+
+                boxes[i][8] = random.uniform(start, end)
+            else:
+                # print("counter clock wise case.")
+                boxes[i][0] = random.uniform(mid, end)
+                boxes[i][1] = random.uniform(mid, end)
+
+                boxes[i][2] = random.uniform(start, mid)
+                boxes[i][3] = random.uniform(mid, end)
+
+                boxes[i][4] = random.uniform(start, mid)
+                boxes[i][5] = random.uniform(start, mid)
+
+                boxes[i][6] = random.uniform(mid, end)
+                boxes[i][7] = random.uniform(start, mid)
+
+                boxes[i][8] = random.uniform(start, end)
         return boxes
 
     def compute(self):
         dtype = self.tensor_list_.getInputTensor(0).getDataType()
-        np_boxes = self.tensor_list_.getInputTensor(0).getData()
         iou_thresh = self.iou_threshold
         out_tensor = self.tensor_list_.getOutputTensor(0)
         out_tensor_length = self.tensor_list_.getOutputTensor(1)
 
-        if iou_thresh * 10 % 2 == 0:
-            boxes1 = self.createCWCase()
-        else:
-            boxes1 = self.createCCWCase()
+        boxes_data = self.createRandomOrderCase()
 
         if (dtype == DataType.FLOAT32):
-            boxes = boxes1.to(torch.float32).cuda()
+            boxes = boxes_data.to(torch.float32).cuda()
             keep = poly_nms_cuda.poly_nms(boxes, iou_thresh)
             dims = out_tensor.getShape()[0]
             result = keep.cpu().numpy()
