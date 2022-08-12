@@ -7,7 +7,7 @@
     "manual_data":[
         {
             "inputs":[
-                {"shape":[0,9],"dtype":"float32","layout":"ARRAY","random_distribution":{"uniform":[0,100]}}
+                {"shape":[0,9],"dtype":"float32","layout":"ARRAY","random_distribution":{"uniform":[-10,10]}}
             ],
             "outputs":[
                 {"shape":[0],"dtype":"int32","layout":"ARRAY"},
