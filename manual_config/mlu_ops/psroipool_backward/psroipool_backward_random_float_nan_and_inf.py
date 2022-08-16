@@ -96,6 +96,7 @@ if __name__ == "__main__":
     res = '{\n\
     "op_name":"psroipool_backward",\n\
     "device":"gpu",\n\
+    "supported_mlu_platform":["370"],\n\
     "data_type":{"input_dtype":["float32","int32","float32"], "output_dtype":["float32"]},\n\
     "random_distribution":{"uniform":[-100,100]},\n\
     "require_value":true,\n\
