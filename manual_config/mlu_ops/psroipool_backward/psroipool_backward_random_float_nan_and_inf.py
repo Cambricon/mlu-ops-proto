@@ -14,26 +14,25 @@ def dRandomDistribution(start, end):
     return '"random_distribution":{"uniform":[' + str(start) + ',' + str(end) + ']}'
 def dlayout(data_layout):
     return '"layout":"' + data_layout + '"'
-def genSingleCase(dtype='float32', params_list=[1,1,2,2,1]):
-    n = params_list[0]
+def genSingleCase(dtype='float32', params_list=[1,1,2,2]):
+    rois_num = params_list[0]
     ci = params_list[1]
     h = params_list[2]
     w = params_list[3]
-    rois_num = params_list[4]
     pooled_height = h
     pooled_width = w
     spatial_scale = format(np.random.random(), "0.5f")
     output_dim = ci
 
     bottom_c = ci * h * w
-    bottom_b = np.random.randint(1, 50)
+    bottom_n = np.random.randint(1, 50)
     bottom_h = np.random.randint(1, 5*h)
     bottom_w = np.random.randint(1, 5*w)
 
-    top_grad_shape = [n, h, w, ci]
+    top_grad_shape = [rois_num, h, w, ci]
     roi_shape = [rois_num, 5]
-    mappingChannel_shape = [n, h, w, ci]
-    bottom_grad_shape = [bottom_b, bottom_h, bottom_w, bottom_c]
+    mappingChannel_shape = [rois_num, h, w, ci]
+    bottom_grad_shape = [bottom_n, bottom_h, bottom_w, bottom_c]
     inputs = '      {"inputs":['
     input1 = '{' + dShape(top_grad_shape) + ',' + dType(dtype) + ',' + dRandomDistribution(-100,100) + "," +'"contain_nan":true,"contain_inf":true'+ ','+ dlayout("NHWC") + '}'
     input2 = '{' + dShape(mappingChannel_shape) + ',' + dType('int32') + ',' + dRandomDistribution(0,100) + "," + dlayout("NHWC") + '}'
@@ -57,37 +56,33 @@ def genSingleCase(dtype='float32', params_list=[1,1,2,2,1]):
 
 def genCase():
     cur_res = '     "manual_data":[\n'
-    n = np.random.randint(1,300)
+    rois_num = np.random.randint(1,300)
     ci = np.random.randint(1,3)
     h = np.random.randint(1,3)
     w = h
-    num_rois = n
-    param = [n ,ci, h, w, num_rois]
+    param = [rois_num, ci, h, w]
     cur_res += genSingleCase(params_list=param)
     for i in range(90):
-        n = np.random.randint(1,200)
+        rois_num = np.random.randint(1,200)
         ci = np.random.randint(1,5)
         h = np.random.randint(1,5)
         w = h
-        num_rois = n
-        param = [n ,ci, h, w, num_rois]
+        param = [rois_num, ci, h, w]
         cur_res += ',\n' + genSingleCase(params_list=param)
         if i % 10 ==0:
-            n = np.random.randint(10,50)
+            rois_num = np.random.randint(10,50)
             ci = np.random.randint(5,10)
             h = np.random.randint(4,8)
             w = h
-            num_rois = n
-            param = [n ,ci, h, w, num_rois]
+            param = [rois_num, ci, h, w]
             cur_res += ',\n' + genSingleCase(params_list=param)
             
         if i % 30 ==0:
-            n = np.random.randint(10,20)
+            rois_num = np.random.randint(10,20)
             ci = np.random.randint(10,20)
             h = np.random.randint(5,10)
             w = h
-            num_rois = n
-            param = [n ,ci, h, w, num_rois]
+            param = [rois_num, ci, h, w]
             cur_res += ',\n' + genSingleCase(params_list=param)
     cur_res += '\n      ]\n}'
     return cur_res
