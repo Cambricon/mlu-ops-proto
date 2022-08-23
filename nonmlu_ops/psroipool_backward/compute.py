@@ -14,7 +14,8 @@ class PsRoiPoolTensorList(TensorList):
         If tensor has attribute filename, data will be loaded from file,
         else will generate random data.
         '''
-        for input_tensor in self.input_tensors_:
+        for idx in range(3):
+            input_tensor = (self.input_tensors_)[idx]
             if input_tensor.filename_:
                 shape = input_tensor.shape_
                 dtype = input_tensor.getDataType()
@@ -23,9 +24,9 @@ class PsRoiPoolTensorList(TensorList):
                 file_data = np.genfromtxt(input_tensor.filename_, dtype=dtype_str).reshape(shape)
                 input_tensor.getDataNode().setData(file_data)
             else:
-                if (input_tensor == (self.input_tensors_)[0]):
+                if (idx == 0):
                     RandomData(input_tensor).random()
-                elif (input_tensor == (self.input_tensors_)[1]):
+                elif (idx == 1):
                     mappingChannel_array = []
                     mappingChannels_shape = input_tensor.shape_
                     roi_num = mappingChannels_shape[0]
@@ -56,6 +57,8 @@ class PsRoiPoolTensorList(TensorList):
                         roi_y_start = random.random() * float(input_h) * float(input_h)
                         roi_x_end = random.random() * (float(input_w) * float(input_w) - roi_x_start) + roi_x_start
                         roi_y_end = random.random() * (float(input_h) * float(input_h) - roi_y_start) + roi_y_start
+                        if roi_id % 4 == 0:
+                            roi_x_start = -random.random() * float(input_w) * float(input_w)
                         roi_tmp.append((int)(random.randint(0, batch - 1)))
                         roi_tmp.append(format(roi_x_start, "0.5f"))
                         roi_tmp.append(format(roi_y_start, "0.5f"))
@@ -127,3 +130,4 @@ class PsRoiPoolBackwardProtoWriter(MluOpProtoWriter):
         param_node.output_dim = self.op_params_.get("output_dim")
         param_node.pooled_height = self.op_params_.get("pooled_height")
         param_node.pooled_width = self.op_params_.get("pooled_width")
+        
