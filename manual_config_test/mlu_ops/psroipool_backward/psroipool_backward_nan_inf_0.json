@@ -1,0 +1,108 @@
+{
+    "op_name": "psroipool_backward",
+    "device": "gpu",
+    "require_value": true,
+    "random_distribution":{"uniform":[-100,100]},
+    "supported_mlu_platform": ["370"],
+    "evaluation_criterion": ["diff1", "diff2"],
+    "evaluation_threshold": [3e-3, 3e-3],
+    "manual_data": [
+      { 
+        "outputs": [{"shape": [1, 9, 9, 81], "dtype": "float32", "layout": "NHWC"}],
+        "inputs": [{"shape": [707, 3, 3, 9], "dtype": "float32", "contain_nan":true, "contain_inf":true,"layout": "NHWC"},
+                    {"shape": [707, 3, 3, 9], "dtype": "int32", "layout": "NHWC"},
+                   {"shape": [707, 5], "dtype": "float32", "layout": "ARRAY"}],
+        "op_params": {"spatial_scale": 1, "output_dim": 9, "pooled_height": 3, "pooled_width": 3},
+        "proto_params": {"write_data": true}        
+      },
+      {
+        "outputs": [{"shape": [64, 7, 7, 27], "dtype": "float32", "layout": "NHWC"}],
+        "inputs": [{"shape": [10123, 3, 3, 3], "dtype": "float32", "contain_nan":true, "contain_inf":true, "layout": "NHWC"},
+                    {"shape": [10123, 3, 3, 3], "dtype": "int32", "layout": "NHWC"},
+                   {"shape": [10123, 5], "dtype": "float32", "layout": "ARRAY"}],
+        "op_params": {"spatial_scale": 1, "output_dim": 3, "pooled_height": 3, "pooled_width": 3},
+        "proto_params": {"write_data": true}        
+      },
+      { 
+        "outputs": [{"shape": [1, 5, 5, 6480], "dtype": "float32", "layout": "NHWC"}],
+        "inputs": [{"shape": [3, 9, 9, 80], "dtype": "float32","contain_nan":true,"contain_inf":true, "layout": "NHWC"},
+                    {"shape": [3, 9, 9, 80], "dtype": "int32", "layout": "NHWC"},
+                   {"shape": [3, 5], "dtype": "float32", "layout": "ARRAY"}],
+        "op_params": {"spatial_scale": 0.1, "output_dim": 80, "pooled_height": 9, "pooled_width": 9},
+        "proto_params": {"write_data": true}        
+      },
+      { 
+        "outputs": [{"shape": [2, 14, 14, 32], "dtype": "float32", "layout": "NHWC"}],
+        "inputs": [{"shape": [493, 2, 2, 8], "dtype": "float32", "contain_nan":true,"contain_inf":true, "layout": "NHWC"},
+                    {"shape": [493, 2, 2, 8], "dtype": "int32", "layout": "NHWC"},
+                   {"shape": [493, 5], "dtype": "float32", "layout": "ARRAY"}],
+        "op_params": {"spatial_scale": 1, "output_dim": 8, "pooled_height": 2, "pooled_width": 2},
+        "proto_params": {"write_data": true}        
+      },
+      { 
+        "outputs": [{"shape": [2, 28, 28, 392], "dtype": "float32", "layout": "NHWC"}],
+        "inputs": [{"shape": [998, 7, 7, 8], "dtype": "float32", "contain_nan":true,"contain_inf":true, "layout": "NHWC"},
+                    {"shape": [998, 7, 7, 8], "dtype": "int32", "layout": "NHWC"},
+                   {"shape": [998, 5], "dtype": "float32", "layout": "ARRAY"}],
+        "op_params": {"spatial_scale": 0.25,  "output_dim": 8, "pooled_height": 7, "pooled_width": 7},
+        "proto_params": {"write_data": true, "large_tensor": true}        
+      },
+      { 
+        "outputs": [{"shape": [2, 9, 9, 189], "dtype": "float32", "layout": "NHWC"}],
+        "inputs": [{"shape": [13, 3, 3, 21], "dtype": "float32", "contain_nan":true,"contain_inf":true, "layout": "NHWC"},
+                    {"shape": [13, 3, 3, 21], "dtype": "int32", "layout": "NHWC"},
+                   {"shape": [13, 5], "dtype": "float32", "layout": "ARRAY"}],
+        "op_params": {"spatial_scale": 0.125,  "output_dim": 21, "pooled_height": 3, "pooled_width": 3},
+        "proto_params": {"write_data": true}        
+      },
+      { 
+        "outputs": [{"shape": [2, 13, 13, 72], "dtype": "float32", "layout": "NHWC"}],
+        "inputs": [{"shape": [11, 3, 3, 8], "dtype": "float32", "contain_nan":true,"contain_inf":true, "layout": "NHWC"},
+                    {"shape": [11, 3, 3, 8], "dtype": "int32", "layout": "NHWC"},
+                   {"shape": [11, 5], "dtype": "float32", "layout": "ARRAY"}],
+        "op_params": {"spatial_scale": 0.0625,  "output_dim": 8, "pooled_height": 3, "pooled_width": 3},
+        "proto_params": {"write_data": true}        
+      },
+      { 
+        "outputs": [{"shape": [2, 3, 3, 99], "dtype": "float32", "layout": "NHWC"}],
+        "inputs": [{"shape": [1011, 3, 3, 11], "dtype": "float32", "contain_nan":true,"contain_inf":true, "layout": "NHWC"},
+                    {"shape": [1011, 3, 3, 11], "dtype": "int32", "layout": "NHWC"},
+                   {"shape": [1011, 5], "dtype": "float32", "layout": "ARRAY"}],
+        "op_params": {"spatial_scale": 0.2,  "output_dim": 11, "pooled_height": 3, "pooled_width": 3},
+        "proto_params": {"write_data": true}        
+      },
+      { 
+        "outputs": [{"shape": [16, 7, 7, 256], "dtype": "float32", "layout": "NHWC"}],
+        "inputs": [{"shape": [89, 2, 2, 64], "dtype": "float32", "contain_nan":true,"contain_inf":true, "layout": "NHWC"},
+                    {"shape": [89, 2, 2, 64], "dtype": "int32", "layout": "NHWC"},
+                   {"shape": [89, 5], "dtype": "float32", "layout": "ARRAY"}],
+        "op_params": {"spatial_scale": 0.05, "output_dim": 64, "pooled_height": 2, "pooled_width": 2},
+        "proto_params": {"write_data": true}        
+      },
+      { 
+        "outputs": [{"shape": [32, 200, 304, 27], "dtype": "float32", "layout": "NHWC"}],
+        "inputs": [{"shape": [10561, 3, 3, 3], "dtype": "float32", "contain_nan":true,"contain_inf":true, "layout": "NHWC"},
+                    {"shape": [10561, 3, 3, 3], "dtype": "int32", "layout": "NHWC"},
+                   {"shape": [10561, 5], "dtype": "float32", "layout": "ARRAY"}],
+        "op_params": {"spatial_scale": 0.625,  "output_dim": 3, "pooled_height": 3, "pooled_width": 3},
+        "proto_params": {"write_data": true, "large_tensor": true}        
+      },
+      { 
+        "outputs": [{"shape": [4, 48, 48, 539], "dtype": "float32", "layout": "NHWC"}],
+        "inputs": [{"shape": [740, 7, 7, 11], "dtype": "float32", "contain_inf":true, "layout": "NHWC"},
+                    {"shape": [740, 7, 7, 11], "dtype": "int32", "layout": "NHWC"},
+                   {"shape": [740, 5], "dtype": "float32", "layout": "ARRAY"}],
+        "op_params": {"spatial_scale": 0.9,  "output_dim": 11, "pooled_height": 7, "pooled_width": 7},
+        "proto_params": {"write_data": true}        
+      },
+      { 
+        "outputs": [{"shape": [2, 50, 50, 189], "dtype": "float32", "layout": "NHWC"}],
+        "inputs": [{"shape": [179, 3, 3, 21], "dtype": "float32", "contain_nan":true,"layout": "NHWC"},
+                    {"shape": [179, 3, 3, 21], "dtype": "int32", "layout": "NHWC"},
+                   {"shape": [179, 5], "dtype": "float32", "layout": "ARRAY"}],
+        "op_params": {"spatial_scale": 0.85, "output_dim": 21, "pooled_height": 3, "pooled_width": 3},
+        "proto_params": {"write_data": true, "large_tensor": true}        
+      }
+    ]
+  }
+  
