@@ -1,0 +1,53 @@
+{
+    "op_name":"ball_query",
+    "device":"gpu",
+    "supported_mlu_platform":["370"],
+    "data_type":{"input_dtype":["float32", "float32"], "output_dtype":["int32"]},
+    "require_value":true,
+    "evaluation_criterion":["diff1","diff2"],
+    "evaluation_threshold":[0, 0],
+     "manual_data":[
+     {
+       "inputs":[{"shape":[6,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"},
+                 {"shape":[6,28,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"}],
+       "outputs":[{"shape":[6,1,6],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 1.80358766359,"max_radius": 0.837053293048,"nsample": 6},
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[1,2,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"},
+                 {"shape":[1,2,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"}],
+       "outputs":[{"shape":[1,2,2],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 1.70112497242,"max_radius": 1.48441229213,"nsample": 2},
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[2,7,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"},
+                 {"shape":[2,9,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"}],
+       "outputs":[{"shape":[2,7,3],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 1.63772560144,"max_radius": 0.867294769219,"nsample": 3},
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[1,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"},
+                 {"shape":[1,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"}],
+       "outputs":[{"shape":[1,1,1],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 1.90262278473,"max_radius": 0.654387661729,"nsample": 1},
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[1,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"},
+                 {"shape":[1,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"}],
+       "outputs":[{"shape":[1,1,1],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 0.122021924732,"max_radius": 0.0296842110689,"nsample": 1},
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[1,2,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"},
+                 {"shape":[1,2,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"}],
+       "outputs":[{"shape":[1,2,1],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 0.0418808865128,"max_radius": 0.0398630942296,"nsample": 1},
+       "proto_params":{"write_data":true}
+     }
+     ]
+}
