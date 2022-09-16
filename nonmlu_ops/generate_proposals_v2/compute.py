@@ -89,7 +89,6 @@ class PolyNmsOp(OpTest):
             rpn_roi_probs_tmp = rpn_roi_probs_tmp.reshape(N * self.post_nms_top_n, 1)
             np_rpn_roi_probs.setData(rpn_roi_probs_tmp)
 
-
             np_rpn_rois_num.setData(rpn_rois_num.numpy())
 
             rpn_rois_batch_size_tmp = np.sum(rpn_rois_num.numpy())
