@@ -36,11 +36,12 @@ class PolyNmsOp(OpTest):
         W = np_scores.shape[2]
         A = np_scores.shape[3]
 
-        # input is 【N，H，W, A】        
-        np_scores=np_scores.transpose(0,3,1,2) # NHWA-->NAHW
+        # mluops input is [N，H，W, A], reference operator input is [N, A, H, W]
+        np_scores=np_scores.transpose(0,3,1,2)
         self.tensor_list_.getInputTensor(0).setData(np_scores)
 
-        np_bboox_deltas = np_bboox_deltas.reshape(N, H ,W, A, 4) #[NHW4A]-->NA4HW
+        # mluops input is [N，H，W, A*4], reference operator input is [N, A*4, H, W]
+        np_bboox_deltas = np_bboox_deltas.reshape(N, H ,W, A, 4)
         np_bboox_deltas = np_bboox_deltas.transpose(0,3,4,1,2)
         np_bboox_deltas = np_bboox_deltas.reshape(N, A*4, H ,W)
         self.tensor_list_.getInputTensor(1).setData(np_bboox_deltas)
@@ -101,10 +102,10 @@ class PolyNmsOp(OpTest):
             np_rpn_rois_batch_size.setDiff(diff1=10.0, diff2=10.0, diff3=0)
 
             print("rpn_rois_batch_size", rpn_rois_batch_size_tmp)
-            # input is 【N，H，W，A】  
+            # [N,A,H,W] ==> [N,H,W,A]
             np_scores=np_scores.transpose(0,2,3,1)  # [N,A,H,W] ==> [N,H,W,A]
             self.tensor_list_.getInputTensor(0).setData(np_scores)
-
+            # [N,A*4,H,W] ==> [N,H,W,A*4]
             np_bboox_deltas=np_bboox_deltas.reshape(N, A, 4, H ,W)
             np_bboox_deltas=np_bboox_deltas.transpose(0,3,4,1,2)
             np_bboox_deltas=np_bboox_deltas.reshape(N, H ,W,A*4)

@@ -155,9 +155,9 @@ def genCase():
                 
             if i % 5 == 0:
                 N = np.random.randint(1,100)
-                A = np.random.randint(1,50)
-                H = np.random.randint(1,100)
-                W = np.random.randint(1,100)
+                A = np.random.randint(1,200)
+                H = np.random.randint(1,50)
+                W = np.random.randint(1,50)
 
                 post_nms_top_n = np.random.randint(1,20000)
                 pre_nms_top_n = np.random.randint(1,2000)
