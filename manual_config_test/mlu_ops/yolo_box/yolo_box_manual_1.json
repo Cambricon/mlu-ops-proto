@@ -1,0 +1,57 @@
+{
+    "op_name":"yolo_box",
+    "device":"gpu",
+    "require_value":true,
+    "evaluation_criterion":["diff1", "diff2"],
+    "evaluation_threshold":[3e-3, 3e-3],
+    "manual_data":[
+      {
+        "inputs":[{"shape":[2,320,89,89],"dtype":"float32","random_distribution":{"uniform":[-100,16]},"layout":"NCHW"},
+                  {"shape":[2,2],"dtype":"int32","random_distribution":{"uniform":[256,256]},"layout":"ARRAY"},
+                  {"shape":[16],"dtype":"int32","random_distribution":{"uniform":[1,15]},"layout":"ARRAY"}],
+        "outputs":[{"shape":[2,8,4,7921],"dtype":"float32","layout":"ARRAY"},
+                  {"shape":[2,8,35,7921],"dtype":"float32","layout":"ARRAY"}],
+        "op_params":{"class_num":35,"conf_thresh":0.32,"downsample_ratio":8,"clip_bbox":false,"scale_x_y":1.0,"iou_aware":false,"iou_aware_factor":0.5}
+      },
+      {
+        "inputs":[{"shape":[4,392,8,8],"dtype":"float32","random_distribution":{"gaussian":[-1,1]},"layout":"NCHW"},
+                  {"shape":[4,2],"dtype":"int32","random_distribution":{"uniform":[1024,1024]},"layout":"ARRAY"},
+                  {"shape":[14],"dtype":"int32","random_distribution":{"uniform":[9,9]},"layout":"ARRAY"}],
+        "outputs":[{"shape":[4,7,4,64],"dtype":"float32","layout":"ARRAY"},
+                  {"shape":[4,7,50,64],"dtype":"float32","layout":"ARRAY"}],
+        "op_params":{"class_num":50,"conf_thresh":0.46,"downsample_ratio":16,"clip_bbox":false,"scale_x_y":1.0,"iou_aware":true,"iou_aware_factor":1.0}
+      },
+      {
+        "inputs":[{"shape":[1,318,6,6],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"layout":"NCHW"},
+                  {"shape":[1,2],"dtype":"int32","random_distribution":{"uniform":[10,1000]},"layout":"ARRAY"},
+                  {"shape":[12],"dtype":"int32","random_distribution":{"uniform":[1,15]},"layout":"ARRAY"}],
+        "outputs":[{"shape":[1,6,4,36],"dtype":"float32","layout":"ARRAY"},
+                  {"shape":[1,6,48,36],"dtype":"float32","layout":"ARRAY"}],
+        "op_params":{"class_num":48,"conf_thresh":0.76,"downsample_ratio":32,"clip_bbox":false,"scale_x_y":1.0,"iou_aware":false,"iou_aware_factor":1.0}
+      },
+      {
+        "inputs":[{"shape":[2,318,9,9],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"layout":"NCHW"},
+                  {"shape":[2,2],"dtype":"int32","random_distribution":{"uniform":[10,1000]},"layout":"ARRAY"},
+                  {"shape":[12],"dtype":"int32","random_distribution":{"uniform":[1,15]},"layout":"ARRAY"}],
+        "outputs":[{"shape":[2,6,4,81],"dtype":"float32","layout":"ARRAY"},
+                  {"shape":[2,6,48,81],"dtype":"float32","layout":"ARRAY"}],
+        "op_params":{"class_num":48,"conf_thresh":0.56,"downsample_ratio":16,"clip_bbox":false,"scale_x_y":1.0,"iou_aware":false,"iou_aware_factor":0.5}
+      },
+      {
+        "inputs":[{"shape":[1,693,72,71],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"layout":"NCHW"},
+                  {"shape":[1,2],"dtype":"int32","random_distribution":{"uniform":[10,1000]},"layout":"ARRAY"},
+                  {"shape":[18],"dtype":"int32","random_distribution":{"uniform":[1,15]},"layout":"ARRAY"}],
+        "outputs":[{"shape":[1,9,4,5112],"dtype":"float32","layout":"ARRAY"},
+                  {"shape":[1,9,71,5112],"dtype":"float32","layout":"ARRAY"}],
+        "op_params":{"class_num":71,"conf_thresh":0.27,"downsample_ratio":32,"clip_bbox":false,"scale_x_y":1.0,"iou_aware":true,"iou_aware_factor":0.5}
+      },
+      {
+        "inputs":[{"shape":[128,154,7,7],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"layout":"NCHW"},
+                  {"shape":[128,2],"dtype":"int32","random_distribution":{"uniform":[10,1000]},"layout":"ARRAY"},
+                  {"shape":[4],"dtype":"int32","random_distribution":{"uniform":[1,15]},"layout":"ARRAY"}],
+        "outputs":[{"shape":[128,2,4,49],"dtype":"float32","layout":"ARRAY"},
+                  {"shape":[128,2,71,49],"dtype":"float32","layout":"ARRAY"}],
+        "op_params":{"class_num":71,"conf_thresh":0.27,"downsample_ratio":8,"clip_bbox":false,"scale_x_y":1.0,"iou_aware":true,"iou_aware_factor":0.5}
+      }
+    ]
+}
