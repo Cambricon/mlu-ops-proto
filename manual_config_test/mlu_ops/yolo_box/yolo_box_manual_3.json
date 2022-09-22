@@ -7,7 +7,7 @@
     "supported_mlu_platform": ["370"],
     "manual_data":[
       {
-        "inputs":[{"shape":[1,320,89,89],"dtype":"float32","random_distribution":{"uniform":[16,300]},"layout":"NCHW"},
+        "inputs":[{"shape":[1,320,89,89],"dtype":"float32","random_distribution":{"uniform":[16,300]},"layout":"ARRAY"},
                   {"shape":[1,2],"dtype":"int32","random_distribution":{"uniform":[256,256]},"layout":"ARRAY"},
                   {"shape":[16],"dtype":"int32","random_distribution":{"uniform":[1,15]},"layout":"ARRAY"}],
         "outputs":[{"shape":[1,8,4,7921],"dtype":"float32","layout":"ARRAY"},
@@ -15,7 +15,7 @@
         "op_params":{"class_num":35,"conf_thresh":0.32,"downsample_ratio":8,"clip_bbox":false,"scale_x_y":1.0,"iou_aware":false,"iou_aware_factor":0.5}
       },
       {
-        "inputs":[{"shape":[2,392,8,8],"dtype":"float32","random_distribution":{"gaussian":[-500,500]},"layout":"NCHW"},
+        "inputs":[{"shape":[2,392,8,8],"dtype":"float32","random_distribution":{"gaussian":[-500,500]},"layout":"ARRAY"},
                   {"shape":[2,2],"dtype":"int32","random_distribution":{"uniform":[1024,1024]},"layout":"ARRAY"},
                   {"shape":[14],"dtype":"int32","random_distribution":{"uniform":[9,9]},"layout":"ARRAY"}],
         "outputs":[{"shape":[2,7,4,64],"dtype":"float32","layout":"ARRAY"},
@@ -23,7 +23,7 @@
         "op_params":{"class_num":50,"conf_thresh":0.46,"downsample_ratio":16,"clip_bbox":false,"scale_x_y":1.0,"iou_aware":true,"iou_aware_factor":1.0}
       },
       {
-        "inputs":[{"shape":[3,318,6,6],"dtype":"float32","random_distribution":{"uniform":[-30,30]},"layout":"NCHW"},
+        "inputs":[{"shape":[3,318,6,6],"dtype":"float32","random_distribution":{"uniform":[-30,30]},"layout":"ARRAY"},
                   {"shape":[3,2],"dtype":"int32","random_distribution":{"uniform":[10,1000]},"layout":"ARRAY"},
                   {"shape":[12],"dtype":"int32","random_distribution":{"uniform":[1,15]},"layout":"ARRAY"}],
         "outputs":[{"shape":[3,6,4,36],"dtype":"float32","layout":"ARRAY"},

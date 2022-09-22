@@ -21,7 +21,7 @@ def dlayout(data_layout):
     return '"layout":"' + data_layout + '"'
 def genSingleCase(x_shape, img_size, anchor_shape, boxes_shape, scores_shape, params):
     inputs = '     {\n       "inputs":['
-    input1 = '{' + dShape(x_shape) + ',' + dType("float32") + ',' + dRandomDistribution(-1,1) + "," + dlayout("NCHW") + '}'
+    input1 = '{' + dShape(x_shape) + ',' + dType("float32") + ',' + dRandomDistribution(-1,1) + "," + dlayout("ARRAY") + '}'
     input2 = '{' + dShape(img_size) + ',' + dType("int32") + ',' + dRandomDistribution(10,1000) + "," + dlayout("ARRAY") + '}'
     input3 = '{' + dShape(anchor_shape) + ',' + dType("int32") + ',' + dRandomDistribution(1,15) + "," + dlayout("ARRAY") + '}'
     

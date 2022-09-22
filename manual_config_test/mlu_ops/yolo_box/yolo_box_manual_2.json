@@ -6,7 +6,7 @@
     "evaluation_threshold":[3e-3, 3e-3],
     "manual_data":[
       {
-        "inputs":[{"shape":[8, 255, 19, 19],"dtype":"float32","random_distribution":{"uniform":[-100,16]},"layout":"NCHW"},
+        "inputs":[{"shape":[8, 255, 19, 19],"dtype":"float32","random_distribution":{"uniform":[-100,16]},"layout":"ARRAY"},
                   {"shape":[8,2],"dtype":"int32","random_distribution":{"uniform":[100,1000]},"layout":"ARRAY"},
                   {"shape":[6],"dtype":"int32","random_distribution":{"uniform":[90,400]},"layout":"ARRAY"}],
         "outputs":[{"shape":[8,3,4,361],"dtype":"float32","layout":"ARRAY"},
@@ -14,7 +14,7 @@
         "op_params":{"class_num":80,"conf_thresh":0.01,"downsample_ratio":32,"clip_bbox":true,"scale_x_y":1.0,"iou_aware":false,"iou_aware_factor":0.5}
       },
       {
-        "inputs":[{"shape":[8, 258, 19, 19],"dtype":"float32","random_distribution":{"uniform":[-100,16]},"layout":"NCHW"},
+        "inputs":[{"shape":[8, 258, 19, 19],"dtype":"float32","random_distribution":{"uniform":[-100,16]},"layout":"ARRAY"},
                   {"shape":[8,2],"dtype":"int32","random_distribution":{"uniform":[256,256]},"layout":"ARRAY"},
                   {"shape":[6],"dtype":"int32","random_distribution":{"uniform":[90,400]},"layout":"ARRAY"}],
         "outputs":[{"shape":[8,3,4,361],"dtype":"float32","layout":"ARRAY"},
@@ -22,7 +22,7 @@
         "op_params":{"class_num":80,"conf_thresh":0.01,"downsample_ratio":32,"clip_bbox":true,"scale_x_y":1.0,"iou_aware":true,"iou_aware_factor":0.5}
       },
       {
-        "inputs":[{"shape":[8, 255, 38, 38],"dtype":"float32","random_distribution":{"uniform":[-100,16]},"layout":"NCHW"},
+        "inputs":[{"shape":[8, 255, 38, 38],"dtype":"float32","random_distribution":{"uniform":[-100,16]},"layout":"ARRAY"},
                   {"shape":[8,2],"dtype":"int32","random_distribution":{"uniform":[100,1000]},"layout":"ARRAY"},
                   {"shape":[6],"dtype":"int32","random_distribution":{"uniform":[90,400]},"layout":"ARRAY"}],
         "outputs":[{"shape":[8,3,4,1444],"dtype":"float32","layout":"ARRAY"},
@@ -30,7 +30,7 @@
         "op_params":{"class_num":80,"conf_thresh":0.01,"downsample_ratio":16,"clip_bbox":true,"scale_x_y":1.0,"iou_aware":false,"iou_aware_factor":0.5}
       },
       {
-        "inputs":[{"shape":[8, 258, 38, 38],"dtype":"float32","random_distribution":{"uniform":[-100,16]},"layout":"NCHW"},
+        "inputs":[{"shape":[8, 258, 38, 38],"dtype":"float32","random_distribution":{"uniform":[-100,16]},"layout":"ARRAY"},
                   {"shape":[8,2],"dtype":"int32","random_distribution":{"uniform":[256,256]},"layout":"ARRAY"},
                   {"shape":[6],"dtype":"int32","random_distribution":{"uniform":[90,400]},"layout":"ARRAY"}],
         "outputs":[{"shape":[8,3,4,1444],"dtype":"float32","layout":"ARRAY"},
@@ -39,7 +39,7 @@
       },
 
       {
-        "inputs":[{"shape":[8, 255, 76, 76],"dtype":"float32","random_distribution":{"uniform":[-100,16]},"layout":"NCHW"},
+        "inputs":[{"shape":[8, 255, 76, 76],"dtype":"float32","random_distribution":{"uniform":[-100,16]},"layout":"ARRAY"},
                   {"shape":[8,2],"dtype":"int32","random_distribution":{"uniform":[100,1000]},"layout":"ARRAY"},
                   {"shape":[6],"dtype":"int32","random_distribution":{"uniform":[10,40]},"layout":"ARRAY"}],
         "outputs":[{"shape":[8,3,4,5776],"dtype":"float32","layout":"ARRAY"},
@@ -47,7 +47,7 @@
         "op_params":{"class_num":80,"conf_thresh":0.01,"downsample_ratio":8,"clip_bbox":true,"scale_x_y":1.0,"iou_aware":false,"iou_aware_factor":0.5}
       },
       {
-        "inputs":[{"shape":[8, 258, 76, 76],"dtype":"float32","random_distribution":{"uniform":[-100,16]},"layout":"NCHW"},
+        "inputs":[{"shape":[8, 258, 76, 76],"dtype":"float32","random_distribution":{"uniform":[-100,16]},"layout":"ARRAY"},
                   {"shape":[8,2],"dtype":"int32","random_distribution":{"uniform":[256,256]},"layout":"ARRAY"},
                   {"shape":[6],"dtype":"int32","random_distribution":{"uniform":[10,40]},"layout":"ARRAY"}],
         "outputs":[{"shape":[8,3,4,5776],"dtype":"float32","layout":"ARRAY"},
