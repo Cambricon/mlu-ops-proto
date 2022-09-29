@@ -38,8 +38,9 @@ def genSingleCase(dtype='float32', params_list=[1,1,1,1,1,1,1,1,1]):
     rpn_rois_num_shape = [N]
     rpn_rois_batch_size_shape = [1]
 
-    bottom_limit = 10
-    up_limit = 100
+    up_limit = params_list[10]
+    bottom_limit  = params_list[11]
+  
     mid = bottom_limit + 0.5 * (up_limit-bottom_limit)
 
     inputs = '    {\n       "inputs":[\n'
@@ -95,7 +96,10 @@ def genCase():
         eta = 1.0
         pixel_offset = np.random.randint(0,10) > 5
 
-        param = [N, A, H ,W, post_nms_top_n, pre_nms_top_n, nms_thresh, min_size, eta, pixel_offset]
+        up_limit = np.random.randint(0,10000000)
+        bottom_limit = np.random.randint(-10000000, 0)
+
+        param = [N, A, H ,W, post_nms_top_n, pre_nms_top_n, nms_thresh, min_size, eta, pixel_offset, up_limit, bottom_limit]
         cur_res += genSingleCase(params_list=param)
 
         for i in range(60):
@@ -114,7 +118,7 @@ def genCase():
             eta = 1.0
             pixel_offset = np.random.randint(0,10) > 5
 
-            param = [N, A, H ,W, post_nms_top_n, pre_nms_top_n, nms_thresh, min_size, eta, pixel_offset]
+            param = [N, A, H ,W, post_nms_top_n, pre_nms_top_n, nms_thresh, min_size, eta, pixel_offset, up_limit, bottom_limit]
             cur_res += ',\n' + genSingleCase(params_list=param)
 
             if i % 2 == 0:
@@ -133,7 +137,7 @@ def genCase():
                 eta = 1.0
                 pixel_offset = np.random.randint(0,10) > 5
 
-                param = [N, A, H ,W, post_nms_top_n, pre_nms_top_n, nms_thresh, min_size, eta, pixel_offset]
+                param = [N, A, H ,W, post_nms_top_n, pre_nms_top_n, nms_thresh, min_size, eta, pixel_offset, up_limit, bottom_limit]
                 cur_res += ',\n' + genSingleCase(params_list=param)
 
 
@@ -149,7 +153,11 @@ def genCase():
                 min_size = np.random.randint(1,50)/100
                 eta = 1.0
                 pixel_offset = np.random.randint(0,10) > 5
-                param = [N, A, H ,W, post_nms_top_n, pre_nms_top_n, nms_thresh, min_size, eta, pixel_offset]
+
+                up_limit = np.random.randint(0,10000000)
+                bottom_limit = np.random.randint(-10000000, 0)
+
+                param = [N, A, H ,W, post_nms_top_n, pre_nms_top_n, nms_thresh, min_size, eta, pixel_offset, up_limit, bottom_limit]
                 cur_res += ',\n' + genSingleCase(params_list=param)
 
                 
@@ -165,7 +173,9 @@ def genCase():
                 min_size = np.random.randint(1,50)/100
                 eta = 1.0
                 pixel_offset = np.random.randint(0,10) > 5
-                param = [N, A, H ,W, post_nms_top_n, pre_nms_top_n, nms_thresh, min_size, eta, pixel_offset]
+                up_limit = np.random.randint(0,10000)
+                bottom_limit = np.random.randint(-10000, 0)
+                param = [N, A, H ,W, post_nms_top_n, pre_nms_top_n, nms_thresh, min_size, eta, pixel_offset, up_limit, bottom_limit]
                 cur_res += ',\n' + genSingleCase(params_list=param)
 
     else:
@@ -176,8 +186,11 @@ def genCase():
         eta = 1.0
         pixel_offset = 1
 
+        up_limit = np.random.randint(0,10000000)
+        bottom_limit = np.random.randint(-10000000, 0)
+
         scale1=[1, 15, 54, 40]
-        param=[post_nms_top_n, pre_nms_top_n, nms_thresh, min_size, eta, pixel_offset]
+        param=[post_nms_top_n, pre_nms_top_n, nms_thresh, min_size, eta, pixel_offset, up_limit, bottom_limit]
         scales=[scale1+param]
 
         cur_res += genSingleCase(params_list=scales[0])
