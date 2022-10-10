@@ -1,0 +1,30 @@
+{
+    "op_name":"three_interpolate_forward",
+    "device":"gpu",
+    "require_value":true,
+    "evaluation_criterion":["diff1","diff2"],
+    "evaluation_threshold":[0.003,0.003],
+     "manual_data":[
+     {
+       "inputs":[{"shape":[26,106,24],"dtype":"float32","random_distribution":{"uniform":[0,100]},"layout":"ARRAY"},
+                 {"shape":[26,22,3],"dtype":"int32","random_distribution":{"uniform":[0,23]},"layout":"ARRAY"},
+                 {"shape":[26,22,3],"dtype":"float32","random_distribution":{"uniform":[0,1]},"layout":"ARRAY"}],
+       "outputs":[{"shape":[26,106,22],"dtype":"float32","layout":"ARRAY"}],
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[1,232,819],"dtype":"float32","random_distribution":{"uniform":[0,100]},"layout":"ARRAY"},
+                 {"shape":[1,1053,3],"dtype":"int32","random_distribution":{"uniform":[0,818]},"layout":"ARRAY"},
+                 {"shape":[1,1053,3],"dtype":"float32","random_distribution":{"uniform":[0,1]},"layout":"ARRAY"}],
+       "outputs":[{"shape":[1,232,1053],"dtype":"float32","layout":"ARRAY"}],
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[6,932,703],"dtype":"float32","random_distribution":{"uniform":[0,100]},"layout":"ARRAY"},
+                 {"shape":[6,888,3],"dtype":"int32","random_distribution":{"uniform":[0,702]},"layout":"ARRAY"},
+                 {"shape":[6,888,3],"dtype":"float32","random_distribution":{"uniform":[0,1]},"layout":"ARRAY"}],
+       "outputs":[{"shape":[6,932,888],"dtype":"float32","layout":"ARRAY"}],
+       "proto_params":{"write_data":true}
+     }
+     ]
+}
