@@ -67,8 +67,8 @@ class DataType(Enum):
 
     def getComplexSaveType(self):
         type_dict = {
-            DataType.COMPLEX_HALF: 'half',
-            DataType.COMPLEX_FLOAT: 'float',
+            DataType.COMPLEX_HALF: 'float16',
+            DataType.COMPLEX_FLOAT: 'float32',
         }
         return type_dict[self]
 
