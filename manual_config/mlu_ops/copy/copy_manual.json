@@ -1,0 +1,27 @@
+{
+    "op_name": "copy",
+    "device": "gpu",
+    "run_mode": ["online"],
+    "random_distribution": {"uniform":[-100,100]},
+    "evaluation_criterion": ["diff3"],
+    "evaluation_threshold":[0],
+    "manual_data" : [
+      {"inputs":[{"shape":[10],"dtype":"complex_float","random_distribution":{"uniform":[-100,100]},"layout":"Array", "contain_nan":false, "contain_inf":false}],
+       "outputs":[{"shape":[10],"dtype":"complex_float","layout":"Array"}],
+       "proto_params":{"large_tensor":false}},
+
+      {"inputs":[{"shape":[100],"dtype":"complex_half","random_distribution":{"uniform":[-100,100]},"layout":"Array", "contain_nan":false, "contain_inf":false}],
+       "outputs":[{"shape":[100],"dtype":"complex_half","layout":"Array"}],
+       "proto_params":{"large_tensor":false}},
+
+      {"inputs":[{"shape":[1000],"dtype":"complex_half","random_distribution":{"uniform":[-100,100]},"layout":"Array", "contain_nan":false, "contain_inf":false}],
+       "outputs":[{"shape":[1000],"dtype":"complex_half","layout":"Array"}],
+       "proto_params":{"large_tensor":false}},
+
+      {"inputs":[{"shape":[100],"dtype":"double","random_distribution":{"uniform":[-100,100]},"layout":"Array", "contain_nan":false, "contain_inf":false}],
+       "outputs":[{"shape":[100],"dtype":"double","layout":"Array"}],
+       "proto_params":{"large_tensor":false}}
+    ]
+}
+
+
