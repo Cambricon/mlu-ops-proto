@@ -1,0 +1,67 @@
+{
+    "op_name":"ball_query",
+    "device":"gpu",
+    "supported_mlu_platform":["370"],
+    "data_type":{"input_dtype":["float32", "float32"], "output_dtype":["int32"]},
+    "require_value":true,
+    "evaluation_criterion":["diff1","diff2"],
+    "evaluation_threshold":[0, 0],
+     "manual_data":[
+     {
+       "inputs":[{"shape":[22,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":true,"layout":"ARRAY"},
+                 {"shape":[22,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":true,"layout":"ARRAY"}],
+       "outputs":[{"shape":[22,1,1],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 1.77097393199,"max_radius": 0.159882440164,"nsample": 1},
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[1,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":true,"layout":"ARRAY"},
+                 {"shape":[1,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":true,"layout":"ARRAY"}],
+       "outputs":[{"shape":[1,1,1],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 1.99420652234,"max_radius": 0.544231834535,"nsample": 1},
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[2,4,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":true,"layout":"ARRAY"},
+                 {"shape":[2,9,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":true,"layout":"ARRAY"}],
+       "outputs":[{"shape":[2,4,9],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 1.53389278433,"max_radius": 1.24906314384,"nsample": 9},
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[1,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":true,"layout":"ARRAY"},
+                 {"shape":[1,2,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":true,"layout":"ARRAY"}],
+       "outputs":[{"shape":[1,1,1],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 0.0141884585615,"max_radius": 0.0105176660528,"nsample": 1},
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[1,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":true,"layout":"ARRAY"},
+                 {"shape":[1,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":true,"layout":"ARRAY"}],
+       "outputs":[{"shape":[1,1,1],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 0.809497371182,"max_radius": 0.0538897957671,"nsample": 1},
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[1,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":true,"layout":"ARRAY"},
+                 {"shape":[1,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":true,"layout":"ARRAY"}],
+       "outputs":[{"shape":[1,1,1],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 1.27855239585,"max_radius": 1.20220737009,"nsample": 1},
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[4,4,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":true,"layout":"ARRAY"},
+                 {"shape":[4,9,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":true,"layout":"ARRAY"}],
+       "outputs":[{"shape":[4,4,4],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 0.181316840369,"max_radius": 0.00532555553645,"nsample": 4},
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[1,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":true,"layout":"ARRAY"},
+                 {"shape":[1,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":true,"layout":"ARRAY"}],
+       "outputs":[{"shape":[1,1,1],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 0.744658089409,"max_radius": 0.38949759614,"nsample": 1},
+       "proto_params":{"write_data":true}
+     }
+     ]
+}

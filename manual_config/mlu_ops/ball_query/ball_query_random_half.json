@@ -1,0 +1,38 @@
+{
+    "op_name":"ball_query",
+    "device":"gpu",
+    "data_type":{"input_dtype":["half", "half"], "output_dtype":["int32"]},
+    "require_value":true,
+    "evaluation_criterion":["diff1","diff2"],
+    "evaluation_threshold":[0, 0],
+     "manual_data":[
+     {
+       "inputs":[{"shape":[5,31,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"},
+                 {"shape":[5,146,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"}],
+       "outputs":[{"shape":[5,31,58],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 0.608335059124,"max_radius": 1.72806794542,"nsample": 58},
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[2,373,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"},
+                 {"shape":[2,454,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"}],
+       "outputs":[{"shape":[2,373,436],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 1.28812812176,"max_radius": 1.32241534896,"nsample": 436},
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[21,7,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"},
+                 {"shape":[21,662,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"}],
+       "outputs":[{"shape":[21,7,631],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 0.0150273915345,"max_radius": 0.0316805766984,"nsample": 631},
+       "proto_params":{"write_data":true}
+     },
+     {
+       "inputs":[{"shape":[4,54,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"},
+                 {"shape":[4,80,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"}],
+       "outputs":[{"shape":[4,54,55],"dtype":"int32","layout":"ARRAY"}],
+       "op_params":{"min_radius": 0.298210316018,"max_radius": 0.420095339979,"nsample": 55},
+       "proto_params":{"write_data":true}
+     }
+     ]
+}
