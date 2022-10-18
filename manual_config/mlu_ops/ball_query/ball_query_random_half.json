@@ -33,6 +33,41 @@
        "outputs":[{"shape":[4,54,55],"dtype":"int32","layout":"ARRAY"}],
        "op_params":{"min_radius": 0.298210316018,"max_radius": 0.420095339979,"nsample": 55},
        "proto_params":{"write_data":true}
-     }
+     },
+     {
+      "inputs":[{"shape":[11,71,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"},
+                {"shape":[11,139,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"}],
+      "outputs":[{"shape":[11,71,116],"dtype":"int32","layout":"ARRAY"}],
+      "op_params":{"min_radius": 1.5784227187,"max_radius": 1.5784227187,"nsample": 116},
+      "proto_params":{"write_data":true}
+    },
+    {
+      "inputs":[{"shape":[21,177,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"},
+                {"shape":[21,242,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"}],
+      "outputs":[{"shape":[21,177,96],"dtype":"int32","layout":"ARRAY"}],
+      "op_params":{"min_radius": 1.3148573183,"max_radius": 1.3148573183,"nsample": 96},
+      "proto_params":{"write_data":true}
+    },
+    {
+      "inputs":[{"shape":[2,111,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"},
+                {"shape":[2,113,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"}],
+      "outputs":[{"shape":[2,111,75],"dtype":"int32","layout":"ARRAY"}],
+      "op_params":{"min_radius": 1.83260201029,"max_radius": 1.62537014799,"nsample": 75},
+      "proto_params":{"write_data":true}
+    },
+    {
+      "inputs":[{"shape":[14,40,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"},
+                {"shape":[14,65,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"}],
+      "outputs":[{"shape":[14,40,65],"dtype":"int32","layout":"ARRAY"}],
+      "op_params":{"min_radius": 1.27181315246,"max_radius": 0.225826086028,"nsample": 65},
+      "proto_params":{"write_data":true}
+    },
+    {
+      "inputs":[{"shape":[18,70,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"},
+                {"shape":[18,203,3],"dtype":"float16","random_distribution":{"uniform":[-1,1]},"layout":"ARRAY"}],
+      "outputs":[{"shape":[18,70,60],"dtype":"int32","layout":"ARRAY"}],
+      "op_params":{"min_radius": 1.01197903884,"max_radius": 0.688524544162,"nsample": 60},
+      "proto_params":{"write_data":true}
+    }
      ]
 }
