@@ -4,14 +4,14 @@
   "supported_mlu_platform":["370"],
   "data_type":{"input_dtype":["float32", "float32"], "output_dtype":["int32"]},
   "require_value":true,
-  "evaluation_criterion":["diff3"],
-  "evaluation_threshold":[0],
+  "evaluation_criterion":["diff1","diff2"],
+  "evaluation_threshold":[0, 0],
    "manual_data":[
    {
      "inputs":[{"shape":[1,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"},
-               {"shape":[1,1,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"}],
-     "outputs":[{"shape":[1,1,4],"dtype":"int32","layout":"ARRAY"}],
-     "op_params":{"min_radius": 0.1,"max_radius": 1,"nsample": 4},
+               {"shape":[1,9,3],"dtype":"float32","random_distribution":{"uniform":[-1,1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"}],
+     "outputs":[{"shape":[1,1,1],"dtype":"int32","layout":"ARRAY"}],
+     "op_params":{"min_radius": 0.1,"max_radius": 1,"nsample": 1},
      "proto_params":{"write_data":true}
    },
    {
@@ -23,21 +23,21 @@
    },
    {
      "inputs":[{"shape":[9,111,3],"dtype":"float32","random_distribution":{"uniform":[-1,-1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"},
-               {"shape":[9,12,3],"dtype":"float32","random_distribution":{"uniform":[-1,-1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"}],
-     "outputs":[{"shape":[9,111,12],"dtype":"int32","layout":"ARRAY"}],
-     "op_params":{"min_radius": 10,"max_radius": 10,"nsample": 12},
+               {"shape":[9,121,3],"dtype":"float32","random_distribution":{"uniform":[-1,-1]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"}],
+     "outputs":[{"shape":[9,111,121],"dtype":"int32","layout":"ARRAY"}],
+     "op_params":{"min_radius": 10,"max_radius": 10,"nsample": 121},
      "proto_params":{"write_data":true}
    },
    {
      "inputs":[{"shape":[18,79,3],"dtype":"float32","random_distribution":{"uniform":[-1e20,1e20]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"},
-               {"shape":[18,10,3],"dtype":"float32","random_distribution":{"uniform":[-1e20,1e20]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"}],
+               {"shape":[18,101,3],"dtype":"float32","random_distribution":{"uniform":[-1e20,1e20]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"}],
      "outputs":[{"shape":[18,79,13],"dtype":"int32","layout":"ARRAY"}],
      "op_params":{"min_radius": 123456,"max_radius": 222222,"nsample": 13},
      "proto_params":{"write_data":true}
    },
    {
      "inputs":[{"shape":[4,64,3],"dtype":"float32","random_distribution":{"uniform":[0,0]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"},
-               {"shape":[4,22,3],"dtype":"float32","random_distribution":{"uniform":[0,0]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"}],
+               {"shape":[4,122,3],"dtype":"float32","random_distribution":{"uniform":[0,0]},"contain_nan":true,"contain_inf":false,"layout":"ARRAY"}],
      "outputs":[{"shape":[4,64,9],"dtype":"int32","layout":"ARRAY"}],
      "op_params":{"min_radius": 0,"max_radius": 0,"nsample": 9},
      "proto_params":{"write_data":true}
