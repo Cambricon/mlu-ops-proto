@@ -18,7 +18,7 @@ class BallQueryOp(OpTest):
     self.xyz     = self.tensor_list_.getInputTensor(1)
     self.out_tensor  = self.tensor_list_.getOutputTensor(0) 
     self.min_radius = self.params_.get("min_radius") 
-    self.max_radius = self.params_.get("min_radius")
+    self.max_radius = self.params_.get("max_radius")
     self.nsample    = self.params_.get("nsample")
 
   def compute(self):
@@ -37,7 +37,7 @@ class BallQueryOp(OpTest):
     assert (batch_new_xyz == batch_xyz)
     assert (num_new_xyz <= num_xyz)
     assert (channel_new_xyz == 3 and channel_new_xyz == channel_xyz)
-    assert (min_radius >= 0 and max_radius >= 0 and min_radius <= max_radius)
+    assert (min_radius >= 0 and max_radius >= 0)
     assert (nsample <= num_xyz and nsample >= 1)
 
     new_xyz_dtype = self.new_xyz.getDataType()
@@ -49,7 +49,7 @@ class BallQueryOp(OpTest):
 
     new_xyz_tensor = torch.from_numpy(self.new_xyz.getData()).cuda()
     xyz_tensor     = torch.from_numpy(self.xyz.getData()).cuda()
-    idx = xyz_tensor.new_zeros(batch_new_xyz, num_new_xyz, nsample, dtype=torch.int)
+    idx = xyz_tensor.new_zeros(batch_new_xyz, num_new_xyz, nsample, dtype=torch.int).cuda()
     ext_module.ball_query_forward(
         new_xyz_tensor,
         xyz_tensor,
