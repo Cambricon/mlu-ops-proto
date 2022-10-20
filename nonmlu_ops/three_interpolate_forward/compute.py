@@ -1,7 +1,9 @@
 import numpy as np
 import torch
 from nonmlu_ops.base import *
-from mmcv.ops import three_interpolate
+from mmcv.utils import ext_loader
+ext_module = ext_loader.load_ext('_ext', ['three_interpolate_forward'])
+
 
 @registerTensorList("three_interpolate_forward")
 class ThreeInterpolateForwardTensorList(TensorList):
@@ -37,10 +39,12 @@ class ThreeInterpolateForwardOp(OpTest):
         assert (idx_dtype == DataType.INT32, "idx's data type should only be int32.")
 
         features = torch.from_numpy(self.features.getData()).cuda()
-        idx      = torch.from_numpy(self.idx.getData()).cuda()
+        indices  = torch.from_numpy(self.idx.getData()).cuda()
         weight   = torch.from_numpy(self.weight.getData()).cuda()
 
-        result = three_interpolate(features, idx, weight)
+        result = features.new_zeros(b,c,n).cuda()
+        ext_module.three_interpolate_forward(
+            features, indices, weight, result, b=b, c=c, m=m, n=n)
         result_tensor = result.cpu().data
         self.out_tensor.setData(result_tensor)
 
