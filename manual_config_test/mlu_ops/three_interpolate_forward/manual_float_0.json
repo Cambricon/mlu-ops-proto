@@ -321,7 +321,7 @@
      },
      {
        "inputs":[{"shape":[166,45,59],"random_distribution":{"uniform":[-10,10]},"layout":"ARRAY"},
-                 {"shape":[166,883,3],"random_distribution":{"uniform":[0,590]},"layout":"ARRAY"},
+                 {"shape":[166,883,3],"random_distribution":{"uniform":[0,59]},"layout":"ARRAY"},
                  {"shape":[166,883,3],"random_distribution":{"uniform":[-10,10]},"layout":"ARRAY"}],
        "outputs":[{"shape":[166,45,883],"layout":"ARRAY"}]
      },

@@ -716,13 +716,6 @@
        "outputs":[{"shape":[512,64,256],"layout":"ARRAY"}]
      },
      {
-       "inputs":[{"shape":[512,1024,128],"random_distribution":{"uniform":[-10,10]},"layout":"ARRAY"},
-                 {"shape":[512,4096,3],"random_distribution":{"uniform":[0,128]},"layout":"ARRAY"},
-                 {"shape":[512,4096,3],"random_distribution":{"uniform":[-10,10]},"layout":"ARRAY"}],
-       "outputs":[{"shape":[512,1024,4096],"layout":"ARRAY"}],
-       "proto_params": {"large_tensor": true}
-     },
-     {
        "inputs":[{"shape":[512,1,1024],"random_distribution":{"uniform":[-10,10]},"layout":"ARRAY"},
                  {"shape":[512,128,3],"random_distribution":{"uniform":[0,1024]},"layout":"ARRAY"},
                  {"shape":[512,128,3],"random_distribution":{"uniform":[-10,10]},"layout":"ARRAY"}],
