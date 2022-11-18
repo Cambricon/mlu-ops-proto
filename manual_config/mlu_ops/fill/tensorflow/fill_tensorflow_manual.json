@@ -1,0 +1,39 @@
+{
+    "op_name": "fill",
+    "device": "gpu",
+    "run_mode": ["online"],
+    "require_value": true,
+    "evaluation_criterion": ["diff3"],
+    "evaluation_threshold": [0],
+    "manual_data": [
+      {"inputs":[{"shape":[5,512,3,4],"dtype":"uint16","random_distribution":{"uniform":[-1000,1000]},"layout":"ARRAY"}],
+       "outputs":[{"shape":[5,512,3,4],"dtype":"uint16","layout":"ARRAY"}],
+       "op_params":{"value": 65534 , "version": 3, "mode":0}},
+      {"inputs":[{"shape":[1,512,3],"dtype":"uint32","random_distribution":{"uniform":[-1000,1000]},"layout":"ARRAY"}],
+       "outputs":[{"shape":[1,512,3],"dtype":"uint32","layout":"ARRAY"}],
+       "op_params":{"value": 4, "version": 3, "mode":0}},
+      {"inputs":[{"shape":[2,512,3,4],"dtype":"uint64","random_distribution":{"uniform":[-1000,1000]},"layout":"ARRAY"}],
+       "outputs":[{"shape":[2,512,3,4],"dtype":"uint64","layout":"ARRAY"}],
+       "op_params":{"value": 4, "version": 3, "mode":0}},
+      {"inputs":[{"shape":[3],"dtype":"uint64","random_distribution":{"uniform":[-1000,1000]},"layout":"ARRAY"}],
+       "outputs":[{"shape":[3],"dtype":"uint64","layout":"ARRAY"}],
+       "op_params":{"value": 4, "version": 3, "mode":0}},
+      {"inputs":[{"shape":[5,512,3,4],"dtype":"uint16","random_distribution":{"uniform":[-1000,1000]},"layout":"ARRAY"}],
+       "outputs":[{"shape":[5,512,3,4],"dtype":"uint16","layout":"ARRAY"}],
+       "op_params":{"value": 4, "version": 3, "mode":1}},
+      {"inputs":[{"shape":[1,512,3],"dtype":"uint32","random_distribution":{"uniform":[-1000,1000]},"layout":"ARRAY"}],
+       "outputs":[{"shape":[1,512,3],"dtype":"uint32","layout":"ARRAY"}],
+       "op_params":{"value_hex": "0xffffffff", "version": 3, "mode":1}},
+      {"inputs":[{"shape":[2,512,3,4],"dtype":"uint64","random_distribution":{"uniform":[-1000,1000]},"layout":"ARRAY"}],
+       "outputs":[{"shape":[2,512,3,4],"dtype":"uint64","layout":"ARRAY"}],
+       "op_params":{"value": 4, "version": 3, "mode":1}},
+      {"inputs":[{"shape":[5,512,3,4],"dtype":"uint16","random_distribution":{"uniform":[-1000,1000]},"layout":"ARRAY"}],
+       "outputs":[{"shape":[5,512,3,4],"dtype":"uint16","layout":"ARRAY"}],
+       "op_params":{"value": 65534 , "version": 1, "mode":0}},
+      {"inputs":[{"shape":[1,512,3],"dtype":"uint32","random_distribution":{"uniform":[-1000,1000]},"layout":"ARRAY"}],
+       "outputs":[{"shape":[1,512,3],"dtype":"uint32","layout":"ARRAY"}],
+       "op_params":{"value": 4, "version": 1, "mode":0}}
+
+    ]
+}
+
