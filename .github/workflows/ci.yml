@@ -1,7 +1,9 @@
 name: bangc_ci
 on:
   push:
-    branches: master
+    branches: [master, r*]
+  pull_request:
+    branches: [master, r*]
     
 jobs:
   test:
@@ -11,4 +13,4 @@ jobs:
       - name: build_proto
         run: >
           docker run --rm -v $(pwd):/work -w /work docker-user.extrotec.com:30080/mlu-ops/mluops_ci:v0.5.1-devel-x86_64-ubuntu18.04-cntoolkit3.3.1
-          protoc mlu_op_test.proto --cpp_out=./ && protoc mlu_op_test.proto --python_out=./
+          bash build.sh
