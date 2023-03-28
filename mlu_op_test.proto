@@ -294,6 +294,7 @@
    optional MoeDispatchForwardParam moe_dispatch_forward_param = 23333;  // param
    optional MoeDispatchBackwardGateParam  moe_dispatch_backward_gate_param   = 135246;  // param
    optional MatMulParam            matmul_param                  = 93;   // MatMulParam
+   optional RoiAlignBackwardParam roi_align_backward_param       = 4427;  //param
  }
  
  
@@ -825,4 +826,12 @@
    optional MatMulCastMode cast_mode = 18 [default = MLUOP_MATMUL_BYPASS_QUANTIZE];
    optional bool atomics_allowed = 19 [default = false];
  }
- 
+
+message RoiAlignBackwardParam {
+  optional float spatial_scale = 1 [default = 1.0];
+  optional int32 sampling_ratio = 2 [default = 2];
+  optional bool aligned = 3 [default = false];
+  optional int32 pool_mode = 4 [default = 1];
+  optional int32 version = 5 [default = 0];
+}
+
