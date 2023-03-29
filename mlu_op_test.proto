@@ -295,6 +295,7 @@
    optional MoeDispatchBackwardGateParam  moe_dispatch_backward_gate_param   = 135246;  // param
    optional MatMulParam            matmul_param                  = 93;   // MatMulParam
    optional RoiAlignBackwardParam roi_align_backward_param       = 4427;  //param
+   optional MsDeformAttnForwardParam ms_deform_attn_forward_param = 16005; // MsDeformAttnForward
  }
  
  
@@ -833,5 +834,9 @@ message RoiAlignBackwardParam {
   optional bool aligned = 3 [default = false];
   optional int32 pool_mode = 4 [default = 1];
   optional int32 version = 5 [default = 0];
+}
+
+message MsDeformAttnForwardParam {
+  optional int32 im2col_step = 1 [default = 64];
 }
 
