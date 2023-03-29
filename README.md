@@ -1,5 +1,3 @@
-111
-
 ### 常用命令
 - protoc mlu_op_test.proto --cpp_out=./
 - protoc mlu_op_test.proto --python_out=./
