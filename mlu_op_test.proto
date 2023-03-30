@@ -296,6 +296,7 @@ message Node {
   optional MatMulParam            matmul_param                  = 93;   // MatMulParam
   optional RoiAlignBackwardParam roi_align_backward_param       = 4427;  // RoiAlignBackwardParam
   optional MsDeformAttnForwardParam ms_deform_attn_forward_param = 16005; // MsDeformAttnForwardParam
+  optional MsDeformAttnBackwardParam ms_deform_attn_backward_param = 1006;  // MsDeformAttnBackwardParam
 }
 
 
@@ -840,6 +841,11 @@ message RoiAlignBackwardParam {
 
 // param to call mluOpMsDeformAttnForward()
 message MsDeformAttnForwardParam {
+  optional int32 im2col_step = 1 [default = 64];
+}
+
+// param to call mluOpMsDeformAttnBackward()
+message MsDeformAttnBackwardParam {
   optional int32 im2col_step = 1 [default = 64];
 }
 
