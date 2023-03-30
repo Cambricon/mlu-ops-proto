@@ -284,6 +284,8 @@ message Node {
   optional RoiAlignRotatedBackwardParam roi_align_rotated_backward_param = 134661;  // param
   optional RotatedFeatureAlignForwardParam rotated_feature_align_forward_param   = 20229510;  //param
   optional RotatedFeatureAlignBackwardParam rotated_feature_align_backward_param = 20221008;  //param
+  optional FocalLossSigmoidForwardParam focal_loss_sigmoid_forward_param   = 15000; // param
+  optional FocalLossSigmoidBackwardParam focal_loss_sigmoid_backward_param = 12322; // param
   optional DeformRoiPoolForwardParam deform_roi_pool_forward_param   = 10126;  //param
   optional DeformRoiPoolBackwardParam deform_roi_pool_backward_param = 10127;  //param
   optional IndiceConvolutionBackwardDataParam indice_convolution_backward_data_param = 22120599;  // param
@@ -356,7 +358,7 @@ message TestParam {
 enum ComputationPreference {
   COMPUTATION_FAST                = 0;
   COMPUTATION_HIGH_PRECISION      = 1;
-  COMPUTATION_ULTRAHISH_PRECISION = 2;
+  COMPUTATION_ULTRAHIGH_PRECISION = 2;
 }
 
 // param to call mluopSetQuantizeRoundMode()/mluopGetQuantizeRoundMode()
@@ -510,6 +512,12 @@ enum NmsAlgo {
   NMS_ALGO_INCLUDE_BOUNDARY = 1;
 }
 
+enum LossReduction {
+  LOSS_REDUCTION_NONE = 0;
+  LOSS_REDUCTION_SUM = 1;
+  LOSS_REDUCTION_MEAN = 2;
+}
+
 // param to call mluOpSqrt()
 message SqrtParam {
   optional ComputationPreference prefer = 1 [default = COMPUTATION_HIGH_PRECISION];
@@ -589,6 +597,21 @@ message VoxelPoolingForwardParam {
   optional int32 num_voxel_x  = 4;
   optional int32 num_voxel_y  = 5;
   optional int32 num_voxel_z  = 6;
+}
+
+// param to call mluOpFocalLossSigmoidForward()
+message FocalLossSigmoidForwardParam {
+  optional ComputationPreference prefer = 999 [default = COMPUTATION_HIGH_PRECISION];
+  required LossReduction reduction = 1 [default = LOSS_REDUCTION_NONE];
+  required float alpha = 2 [default = 0.25];
+  required float gamma = 3 [default = 2];
+}
+
+message FocalLossSigmoidBackwardParam {
+  optional ComputationPreference prefer = 1 [default = COMPUTATION_HIGH_PRECISION];
+  required LossReduction reduction = 2 [default = LOSS_REDUCTION_NONE];
+  required float alpha = 3 [default = 0.25];
+  required float gamma = 4 [default = 2];
 }
 
 // param to call mluOpBoxIouRotated()
@@ -724,13 +747,13 @@ message RoiAlignRotatedBackwardParam {
 }
 
 // param to call mluOpRotatedFeatureAlignForward()
-message RotatedFeatureAlignForwardParam{
+message RotatedFeatureAlignForwardParam {
   required float spatial_scale = 1 [default = 1.0];
   required int32 points = 2 [default = 1];
 }
 
 // param to call mluOpRotatedFeatureAlignBackward()
-message RotatedFeatureAlignBackwardParam{
+message RotatedFeatureAlignBackwardParam {
   required float spatial_scale = 1 [default = 1.0];
   required int32 points = 2 [default = 1];
 }
