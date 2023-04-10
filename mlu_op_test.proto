@@ -291,8 +291,7 @@ message Node {
   optional IndiceConvolutionBackwardDataParam indice_convolution_backward_data_param = 22120599;  // param
   optional IndiceConvolutionBackwardParam indice_convolution_backward_param = 20230131;  //param
   optional IndiceConvolutionForwardParam indice_convolution_forward_param = 23020721;  //param
-  optional CarafeForwardParam  carafe_forward_param     = 408;  // CarafeForwardParam
-  optional CarafeBackwardParam  carafe_backward_param   = 409;  // CarafeBackwardParam
+  optional CarafeParam  carafe_param     = 408;  // CarafeForwardParam and CarafeBackwardParam
   optional MoeDispatchForwardParam moe_dispatch_forward_param = 23333;  // param
   optional MoeDispatchBackwardGateParam  moe_dispatch_backward_gate_param   = 135246;  // param
   optional MatMulParam            matmul_param                  = 93;   // MatMulParam
@@ -798,16 +797,8 @@ message IndiceConvolutionForwardParam {
   repeated int64 indice_num = 4;
 }
 
-// param to call mluOpCarafeForward()
-message CarafeForwardParam {
-  optional int32 dimnb        = 1;
-  optional int32 kernel_size  = 2;
-  optional int32 group_size   = 3;
-  optional int32 scale_factor = 4;
-}
-
-// param to call mluOpCarafeBackward()
-message CarafeBackwardParam {
+// param to call mluOpCarafeForward() and mluOpCarafeBackward()
+message CarafeParam {
   optional int32 dimnb        = 1;
   optional int32 kernel_size  = 2;
   optional int32 group_size   = 3;
