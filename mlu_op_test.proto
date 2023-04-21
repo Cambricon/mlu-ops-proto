@@ -92,6 +92,7 @@ enum EvaluationCriterion {
   DIFF3   = 8;
   DIFF3_2 = 9;
   DIFF4   = 10;
+  DIFF_KL = 11;
 }
 
 enum MLUPlatform {
@@ -862,4 +863,3 @@ message MsDeformAttnForwardParam {
 message MsDeformAttnBackwardParam {
   optional int32 im2col_step = 1 [default = 64];
 }
-
