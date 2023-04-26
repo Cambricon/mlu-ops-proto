@@ -152,6 +152,13 @@ enum ActivationMode{
   ACTIVATION_SOFTSHRINK = 20;
 }
 
+// param to reduce
+enum ReduceMode {
+  REDUCE_MODE_SUM = 0;
+  REDUCE_MODE_MEAN = 1;
+  REDUCE_MODE_MAX = 2; 
+}
+
 message RuntimeEnvironment {
   required string dl_framework  =  1;
 }
@@ -299,6 +306,7 @@ message Node {
   optional RoiAlignBackwardParam roi_align_backward_param       = 4427;  // RoiAlignBackwardParam
   optional MsDeformAttnForwardParam ms_deform_attn_forward_param = 16005; // MsDeformAttnForwardParam
   optional MsDeformAttnBackwardParam ms_deform_attn_backward_param = 1006;  // MsDeformAttnBackwardParam
+  optional DynamicPointToVoxelForwardParam dynamic_point_to_voxel_forward_param = 4012;  // DynamicPointToVoxelForwardParam
 }
 
 
@@ -862,4 +870,9 @@ message MsDeformAttnForwardParam {
 // param to call mluOpMsDeformAttnBackward()
 message MsDeformAttnBackwardParam {
   optional int32 im2col_step = 1 [default = 64];
+}
+
+// param to call mluOpDynamicPointToVoxelForward()
+message DynamicPointToVoxelForwardParam {
+   required ReduceMode reduce_type = 1;
 }
