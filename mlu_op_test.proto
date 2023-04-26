@@ -874,5 +874,5 @@ message MsDeformAttnBackwardParam {
 
 // param to call mluOpDynamicPointToVoxelForward()
 message DynamicPointToVoxelForwardParam {
-   required ReduceMode reduce_type = 1 [default = REDUCE_MODE_MAX];
+   required ReduceMode reduce_type = 1;
 }
