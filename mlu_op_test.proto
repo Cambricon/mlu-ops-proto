@@ -306,7 +306,7 @@ message Node {
   optional RoiAlignBackwardParam roi_align_backward_param       = 4427;  // RoiAlignBackwardParam
   optional MsDeformAttnForwardParam ms_deform_attn_forward_param = 16005; // MsDeformAttnForwardParam
   optional MsDeformAttnBackwardParam ms_deform_attn_backward_param = 1006;  // MsDeformAttnBackwardParam
-  optional DynamicPointToVoxelForwardParam dynamic_point_to_voxel_forward_param = 4012;  // param
+  optional DynamicPointToVoxelForwardParam dynamic_point_to_voxel_forward_param = 4012;  // DynamicPointToVoxelForwardParam
 }
 
 
