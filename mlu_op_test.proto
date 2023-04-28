@@ -306,6 +306,7 @@ message Node {
   optional RoiAlignBackwardParam roi_align_backward_param       = 4427;  // RoiAlignBackwardParam
   optional MsDeformAttnForwardParam ms_deform_attn_forward_param = 16005; // MsDeformAttnForwardParam
   optional MsDeformAttnBackwardParam ms_deform_attn_backward_param = 1006;  // MsDeformAttnBackwardParam
+  optional MutualInformationBackwardParam mutual_information_backward_param = 20230414; // MutualInformationBackwardParam
   optional DynamicPointToVoxelForwardParam dynamic_point_to_voxel_forward_param = 4012;  // DynamicPointToVoxelForwardParam
 }
 
@@ -870,6 +871,11 @@ message MsDeformAttnForwardParam {
 // param to call mluOpMsDeformAttnBackward()
 message MsDeformAttnBackwardParam {
   optional int32 im2col_step = 1 [default = 64];
+}
+
+// param to call MutualInformationBackward()
+message MutualInformationBackwardParam {
+    required bool overwrite_ans_grad = 1;
 }
 
 // param to call mluOpDynamicPointToVoxelForward()
