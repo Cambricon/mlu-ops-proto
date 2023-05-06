@@ -308,6 +308,7 @@ message Node {
   optional MsDeformAttnBackwardParam ms_deform_attn_backward_param = 1006;  // MsDeformAttnBackwardParam
   optional MutualInformationBackwardParam mutual_information_backward_param = 20230414; // MutualInformationBackwardParam
   optional DynamicPointToVoxelForwardParam dynamic_point_to_voxel_forward_param = 4012;  // DynamicPointToVoxelForwardParam
+  optional DynamicPointToVoxelBackwardParam dynamic_point_to_voxel_backward_param = 4013;  // DynamicPointToVoxelBackwardParam
 }
 
 
@@ -880,5 +881,10 @@ message MutualInformationBackwardParam {
 
 // param to call mluOpDynamicPointToVoxelForward()
 message DynamicPointToVoxelForwardParam {
+   required ReduceMode reduce_type = 1;
+}
+
+// param to call mluOpDynamicPointToVoxelBackward()
+message DynamicPointToVoxelBackwardParam {
    required ReduceMode reduce_type = 1;
 }
