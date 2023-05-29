@@ -306,6 +306,8 @@ message Node {
   optional RoiAlignBackwardParam roi_align_backward_param       = 4427;  // RoiAlignBackwardParam
   optional MsDeformAttnForwardParam ms_deform_attn_forward_param = 16005; // MsDeformAttnForwardParam
   optional MsDeformAttnBackwardParam ms_deform_attn_backward_param = 1006;  // MsDeformAttnBackwardParam
+  optional BorderAlignBackwardParam border_align_backward_param = 9001;  // BorderAlignBackwardParam
+  optional BorderAlignForwardParam border_align_forward_param = 1009;  // BorderAlignForwardParam
   optional MutualInformationBackwardParam mutual_information_backward_param = 20230414; // MutualInformationBackwardParam
   optional DynamicPointToVoxelForwardParam dynamic_point_to_voxel_forward_param = 4012;  // DynamicPointToVoxelForwardParam
   optional DynamicPointToVoxelBackwardParam dynamic_point_to_voxel_backward_param = 4013;  // DynamicPointToVoxelBackwardParam
@@ -450,6 +452,14 @@ message AddNParam {
 message TransposeParam {
   required int32 dim     = 1;
   repeated int32 permute = 2;
+}
+
+message BorderAlignForwardParam {
+  optional int32 pool_size     = 1[default = 10];
+}
+
+message BorderAlignBackwardParam {
+  optional int32 pool_size     = 1[default = 10];
 }
 
 message ScatterNdParam {
