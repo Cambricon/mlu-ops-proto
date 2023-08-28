@@ -312,6 +312,7 @@ message Node {
   optional DynamicPointToVoxelBackwardParam dynamic_point_to_voxel_backward_param = 4013;  // DynamicPointToVoxelBackwardParam
   optional MaskedIm2colForwardParam masked_im2col_forward_param = 2201;  // MaskedIm2colForwardParam
   optional RoiPoolingForwardParam roi_pooling_forward_param = 210812;  // RoiPoolingForwardParam
+  optional RoiPoolingBackwardParam roi_pooling_backward_param = 888888;  // RoiPoolingBackwardParam
 }
 
 
@@ -913,6 +914,12 @@ enum PoolingForwardMode {
 
 // param to call mluOpRoiPoolingForward()
 message RoiPoolingForwardParam {
+  optional float spatial_scale = 1 [default = 1];
+  optional PoolingForwardMode mode = 2 [default = POOLING_MAX];
+}
+
+// param to call mluOpRoiPoolingBackward()
+message RoiPoolingBackwardParam {
   optional float spatial_scale = 1 [default = 1];
   optional PoolingForwardMode mode = 2 [default = POOLING_MAX];
 }
