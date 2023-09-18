@@ -313,6 +313,7 @@ message Node {
   optional MaskedIm2colForwardParam masked_im2col_forward_param = 2201;  // MaskedIm2colForwardParam
   optional RoiPoolingForwardParam roi_pooling_forward_param = 210812;  // RoiPoolingForwardParam
   optional RoiPoolingBackwardParam roi_pooling_backward_param = 888888;  // RoiPoolingBackwardParam
+  optional TransformParam  transform_param = 25; //TransformParam
 }
 
 
@@ -923,3 +924,12 @@ message RoiPoolingBackwardParam {
   optional float spatial_scale = 1 [default = 1];
   optional PoolingForwardMode mode = 2 [default = POOLING_MAX];
 }
+
+//param to call mluOpTransform()
+message TransformParam{
+  optional float alpha = 1 [default = 1];
+  optional float beta = 2 [default = 1];
+  optional float alpha_imag = 3 [default = 1];
+  optional float beta_imag = 4 [default = 1];
+}
+
