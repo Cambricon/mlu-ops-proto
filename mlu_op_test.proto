@@ -314,6 +314,9 @@ message Node {
   optional RoiPoolingForwardParam roi_pooling_forward_param = 210812;  // RoiPoolingForwardParam
   optional RoiPoolingBackwardParam roi_pooling_backward_param = 888888;  // RoiPoolingBackwardParam
   optional TransformParam  transform_param = 25; //TransformParam
+  optional SyncBatchNormParam sync_batchnorm_stats_param = 11112;  // param
+  optional SyncBatchNormParam sync_batchnorm_gather_stats_with_counts_param = 11113;  // param
+  optional SyncBatchNormBackwardParam sync_batchnorm_backward_reduce_param = 38324;  // param
 }
 
 
@@ -606,6 +609,20 @@ message PriorBoxParam {
   required float step_h                     = 8 [default = 0.0];
   required float offset                     = 9 [default = 0.5];
   required bool min_max_aspect_ratios_order = 10 [default = true];
+}
+
+// param to call mluOpSyncBatchNormStats, mluOpSyncBatchNormGatherStatsWithCounts
+// and mluOpSyncBatchNormElemt.
+message SyncBatchNormParam {
+  required float eps = 1;
+  optional float momentum = 2 [default = 0.1];
+}
+
+// param to call mluOpSyncBatchNormBackwardReduce()
+message SyncBatchNormBackwardParam {
+  required bool needs_input_grad0 = 1 [default = true];
+  required bool needs_input_grad1 = 2 [default = true];
+  required bool needs_input_grad2 = 3 [default = true];
 }
 
 // param to call mluOpVoxelPoolingForward()
