@@ -317,6 +317,7 @@ message Node {
   optional SyncBatchNormParam sync_batchnorm_stats_param = 11112;  // param
   optional SyncBatchNormParam sync_batchnorm_gather_stats_with_counts_param = 11113;  // param
   optional SyncBatchNormBackwardParam sync_batchnorm_backward_reduce_param = 38324;  // param
+  optional StridedSliceParam  strided_slice_param = 44;  // param
 }
 
 
@@ -950,3 +951,9 @@ message TransformParam{
   optional float beta_imag = 4 [default = 1];
 }
 
+// param to call mluOpStridedSlice()
+message StridedSliceParam {
+  repeated int32 begin = 1;
+  repeated int32 end = 2;
+  repeated int32 stride = 3;
+}
