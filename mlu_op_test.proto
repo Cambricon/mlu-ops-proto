@@ -318,6 +318,7 @@ message Node {
   optional SyncBatchNormParam sync_batchnorm_gather_stats_with_counts_param = 11113;  // param
   optional SyncBatchNormBackwardParam sync_batchnorm_backward_reduce_param = 38324;  // param
   optional StridedSliceParam  strided_slice_param = 44;  // param
+  optional ConcatParam        concat_param = 54;         // param 
 }
 
 
@@ -956,4 +957,9 @@ message StridedSliceParam {
   repeated int32 begin = 1;
   repeated int32 end = 2;
   repeated int32 stride = 3;
+}
+
+// param to call mluOpConcat()
+message ConcatParam {
+  required int32 axis = 1 [default = 0];
 }
