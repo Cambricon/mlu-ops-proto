@@ -303,6 +303,7 @@ message Node {
   optional MoeDispatchForwardParam moe_dispatch_forward_param = 23333;  // param
   optional MoeDispatchBackwardGateParam  moe_dispatch_backward_gate_param   = 135246;  // param
   optional MatMulParam            matmul_param                  = 93;   // MatMulParam
+  optional PadParam               pad_param                     = 94;   //  PadParam
   optional RoiAlignBackwardParam roi_align_backward_param       = 4427;  // RoiAlignBackwardParam
   optional MsDeformAttnForwardParam ms_deform_attn_forward_param = 16005; // MsDeformAttnForwardParam
   optional MsDeformAttnBackwardParam ms_deform_attn_backward_param = 1006;  // MsDeformAttnBackwardParam
@@ -787,6 +788,13 @@ message RoiAlignRotatedBackwardParam {
 message RotatedFeatureAlignForwardParam {
   required float spatial_scale = 1 [default = 1.0];
   required int32 points = 2 [default = 1];
+}
+
+// param to call mluOpPad()
+message PadParam{
+  optional float padding_value = 1 [default = 0];
+  repeated int32 padding_param = 2;
+  optional bytes padding_value_hex = 3 [default = "0x00000000"];
 }
 
 // param to call mluOpRotatedFeatureAlignBackward()
