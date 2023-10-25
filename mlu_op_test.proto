@@ -325,7 +325,7 @@ message Node {
   required string op_name                             = 5 [default = "unknown"];    // op_name
   repeated Tensor input                               = 6;
   repeated Tensor output                              = 7;
-  optional OpType op_type                             = 8;     // add op_type for mmcv op
+  optional OpType op_type                             = 8;
 
   // evaluation
   optional TestParam test_param                       = 10;    // remove this param later = delete
