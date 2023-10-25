@@ -15,7 +15,7 @@ jobs:
           docker pull docker-user.extrotec.com:30080/mlu-ops/mluops_ci:latest-devel-x86_64-ubuntu18.04
       - name: get_mluops
         run: |
-          git clone https://github.com/Cambricon/mlu-ops.git 
+          for i in {1..20}; do git clone https://github.com/Cambricon/mlu-ops.git --depth 1 && break || sleep 5; done
       - name: replace_proto
         run: |
           cp mlu_op_test.proto mlu-ops/bangc-ops/test/mlu_op_gtest/pb_gtest/mlu_op_test_proto
