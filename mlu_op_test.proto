@@ -229,6 +229,95 @@ message SeqData {
   optional RandomData random_data       = 14;
 }
 
+enum OpType {
+  ABS = 2022;
+  ACTIVE_ROTATED_FILTER_FORWARD = 257073;
+  ADDN = 7178;
+  BALL_QUERY = 20231025;
+  BBOX_OVERLAPS = 2041;
+  BORDER_ALIGN_BACKWARD = 9001;
+  BORDER_ALIGN_FORWARD = 1009;
+  BOX_IOU_ROTATED = 200;
+  CARAFE_BACKWARD = 409;
+  CARAFE_FORWARD = 408;
+  COPY = 13;
+  DEFORM_ROI_POOL_BACKWARD = 10127;
+  DEFORM_ROI_POOL_FORWARD = 10126;
+  DIFF_IOU_ROTATED_SORT_VERTICES_FORWARD = 402;
+  DIV = 2020;
+  DYNAMIC_POINT_TO_VOXEL_BACKWARD = 404;
+  DYNAMIC_POINT_TO_VOXEL_FORWARD = 405;
+  EXPAND = 5;
+  FILL = 13199;
+  FOCAL_LOSS_SIGMOID_BACKWARD = 12322;
+  FOCAL_LOSS_SIGMOID_FORWARD = 15000;
+  GATHER_ND = 20;
+  GENERATE_PROPOSALS_V2 = 701;
+  GET_INDICE_PAIRS = 702;
+  INDICE_CONVOLUTION_BACKWARD_DATA = 900;
+  INDICE_CONVOLUTION_BACKWARD_FILTER = 901;
+  INDICE_CONVOLUTION_FORWARD = 902;
+  LOG = 20333;
+  MASKED_COL2IM_FORWARD = 2201;
+  MASKED_IM2COL_FORWARD = 2202;
+  MATMUL = 536470911;
+  MOE_DISPATCH_BACKWARD_DATA = 1303;
+  MOE_DISPATCH_BACKWARD_GATE = 1304;
+  MOE_DISPATCH_FORWARD = 1305;
+  MS_DEFORM_ATTN_BACKWARD = 1013;
+  MS_DEFORM_ATTN_FORWARD = 16005;
+  MUTUAL_INFORMATION_BACKWARD = 1308;
+  MUTUAL_INFORMATION_FORWARD = 1309;
+  NMS = 768;
+  NMS_ROTATED = 1401;
+  OP_TENSOR = 2;
+  PAD = 33;
+  POINTS_IN_BOXES = 217;
+  POLY_NMS = 1602;
+  PRIOR_BOX = 1603;
+  PSAMASK_BACKWARD = 134659;
+  PSAMASK_FORWARD = 134658;
+  PSROIPOOL_BACKWARD = 1606;
+  PSROIPOOL_FORWARD = 1607;
+  REDUCE = 1199;
+  ROI_ALIGN_BACKWARD = 4427;
+  ROI_ALIGN_ROTATED_BACKWARD = 134661;
+  ROI_ALIGN_ROTATED_FORWARD = 134660;
+  ROI_CROP_BACKWARD = 1804;
+  ROI_CROP_FORWARD = 1805;
+  ROI_POOLING_BACKWARD = 888888;
+  ROI_POOLING_FORWARD = 210812;
+  ROIALIGN_FORWARD = 1808;
+  ROIAWARE_POOL3D_BACKWARD = 10121;
+  ROIAWARE_POOL3D_FORWARD = 10120;
+  ROIPOINT_POOL3D = 16002;
+  ROTATED_FEATURE_ALIGN_BACKWARD = 20221008;
+  ROTATED_FEATURE_ALIGN_FORWARD = 20229510;
+  SCATTER_ND = 359;
+  SQRT = 2021;
+  SQRT_BACKWARD = 55660;
+  STRIDED_SLICE = 657;
+  SYNC_BATCH_NORM_BACKWARD_ELEMT = 1663;
+  SYNC_BATCHNORM_BACKWARD_ELEMT_V2 = 1664;
+  SYNC_BATCHNORM_BACKWARD_REDUCE = 38324;
+  SYNC_BATCHNORM_ELEMT = 1662;
+  SYNC_BATCHNORM_GATHER_STATS_WITH_COUNTS = 11113;
+  SYNC_BATCHNORM_STATS = 11112;
+  TENSOR_STRIDE_PROCESS = 2000;
+  THREE_INTERPOLATE_BACKWARD = 2001;
+  THREE_INTERPOLATE_FORWARD = 2002;
+  THREE_NN_FORWARD = 2003;
+  TIN_SHIFT_BACKWARD = 150003;
+  TIN_SHIFT_FORWARD = 150002;
+  TRANSFORM = 4;
+  TRANSPOSE = 64;
+  UNIQUE = 1267;
+  UTILS = 2101;
+  VOXEL_POOLING_FORWARD = 2200;
+  VOXELIZATION = 2203;
+  YOLO_BOX = 2500;
+}
+
 message Node {
   optional string valid                               = 1 [default = "True"];
   optional string pattern                             = 2 [default = "random"];
@@ -237,7 +326,7 @@ message Node {
   required string op_name                             = 5 [default = "unknown"];    // op_name
   repeated Tensor input                               = 6;
   repeated Tensor output                              = 7;
-  optional string op_type                             = 8;     // add op_type for mmcv op
+  optional OpType op_type                             = 8;
 
   // evaluation
   optional TestParam test_param                       = 10;    // remove this param later = delete
@@ -303,6 +392,7 @@ message Node {
   optional MoeDispatchForwardParam moe_dispatch_forward_param = 23333;  // param
   optional MoeDispatchBackwardGateParam  moe_dispatch_backward_gate_param   = 135246;  // param
   optional MatMulParam            matmul_param                  = 93;   // MatMulParam
+  optional PadParam               pad_param                     = 94;   //  PadParam
   optional RoiAlignBackwardParam roi_align_backward_param       = 4427;  // RoiAlignBackwardParam
   optional MsDeformAttnForwardParam ms_deform_attn_forward_param = 16005; // MsDeformAttnForwardParam
   optional MsDeformAttnBackwardParam ms_deform_attn_backward_param = 1006;  // MsDeformAttnBackwardParam
@@ -317,6 +407,9 @@ message Node {
   optional SyncBatchNormParam sync_batchnorm_stats_param = 11112;  // param
   optional SyncBatchNormParam sync_batchnorm_gather_stats_with_counts_param = 11113;  // param
   optional SyncBatchNormBackwardParam sync_batchnorm_backward_reduce_param = 38324;  // param
+  optional StridedSliceParam  strided_slice_param = 44;  // param
+  optional ConcatParam        concat_param = 54;         // param 
+  optional OpTensorParam      op_tensor_param = 101;     // param
 }
 
 
@@ -428,6 +521,12 @@ enum NanPropagation {
 enum IndicesType{
   BIT32_INDICES = 0;
   BIT16_INDICES = 1;
+}
+
+enum OpTensorDesc {
+  OP_TENSOR_ADD = 1;
+  OP_TENSOR_SUB = 2;
+  OP_TENSOR_MUL = 3;
 }
 
 message ReduceParam {
@@ -788,6 +887,13 @@ message RotatedFeatureAlignForwardParam {
   required int32 points = 2 [default = 1];
 }
 
+// param to call mluOpPad()
+message PadParam{
+  optional float padding_value = 1 [default = 0];
+  repeated int32 padding_param = 2;
+  optional bytes padding_value_hex = 3 [default = "0x00000000"];
+}
+
 // param to call mluOpRotatedFeatureAlignBackward()
 message RotatedFeatureAlignBackwardParam {
   required float spatial_scale = 1 [default = 1.0];
@@ -950,3 +1056,23 @@ message TransformParam{
   optional float beta_imag = 4 [default = 1];
 }
 
+// param to call mluOpStridedSlice()
+message StridedSliceParam {
+  repeated int32 begin = 1;
+  repeated int32 end = 2;
+  repeated int32 stride = 3;
+}
+
+// param to call mluOpConcat()
+message ConcatParam {
+  required int32 axis = 1 [default = 0];
+}
+
+// param to call mluOpOpTensor()
+message OpTensorParam {
+  optional float alpha1 = 1 [default = 1];
+  optional float alpha2 = 2 [default = 1];
+  optional float beta = 3 [default = 1];
+  optional OpTensorDesc op = 4 [default = OP_TENSOR_ADD];
+  optional bool input_same_addr = 5 [default = false];
+}
