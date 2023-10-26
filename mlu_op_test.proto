@@ -270,6 +270,7 @@ enum OpType {
   MUTUAL_INFORMATION_FORWARD = 1309;
   NMS = 768;
   NMS_ROTATED = 1401;
+  OP_TENSOR = 2;
   PAD = 33;
   POINTS_IN_BOXES = 217;
   POLY_NMS = 1602;
@@ -408,6 +409,7 @@ message Node {
   optional SyncBatchNormBackwardParam sync_batchnorm_backward_reduce_param = 38324;  // param
   optional StridedSliceParam  strided_slice_param = 44;  // param
   optional ConcatParam        concat_param = 54;         // param 
+  optional OpTensorParam      op_tensor_param = 101;     // OpTensorParam
 }
 
 
@@ -519,6 +521,12 @@ enum NanPropagation {
 enum IndicesType{
   BIT32_INDICES = 0;
   BIT16_INDICES = 1;
+}
+
+enum OpTensorDesc {
+  OP_TENSOR_ADD = 1;
+  OP_TENSOR_SUB = 2;
+  OP_TENSOR_MUL = 3;
 }
 
 message ReduceParam {
@@ -1058,4 +1066,13 @@ message StridedSliceParam {
 // param to call mluOpConcat()
 message ConcatParam {
   required int32 axis = 1 [default = 0];
+}
+
+// param to call mluOpOpTensor()
+message OpTensorParam {
+  optional float alpha1 = 1 [default = 1];
+  optional float alpha2 = 2 [default = 1];
+  optional float beta = 3 [default = 1];
+  optional OpTensorDesc op = 4 [default = OP_TENSOR_ADD];
+  optional bool input_same_addr = 5 [default = false];
 }
