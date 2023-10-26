@@ -408,6 +408,7 @@ message Node {
   optional SyncBatchNormBackwardParam sync_batchnorm_backward_reduce_param = 38324;  // param
   optional StridedSliceParam  strided_slice_param = 44;  // param
   optional ConcatParam        concat_param = 54;         // param 
+  optional BatchMatMulBCastParam batch_matmul_bcast_param       = 132;   // param
 }
 
 
@@ -1058,4 +1059,17 @@ message StridedSliceParam {
 // param to call mluOpConcat()
 message ConcatParam {
   required int32 axis = 1 [default = 0];
+}
+
+// param to call mluOpBatchMatMulBCast() and mluOpQuantizeBatchMatMulBCast()
+message BatchMatMulBCastParam {
+  optional bool is_transa = 1 [default = false];
+  optional bool is_transb = 2 [default = true];
+  optional DataType compute_type = 3 [default = DTYPE_FLOAT];
+  optional QuantizeMode quant_mode = 4 [default = QUANTIZE_POSITION_SCALE];
+  optional int32 allow_tf32 = 5 [default = 0];
+  optional float alpha = 6 [default = 1.0];
+  optional float beta = 7 [default = 0.0];
+  optional MatMulCastMode cast_mode = 8 [default = MLUOP_MATMUL_BYPASS_QUANTIZE];
+  optional bool use_stride = 9 [default = false];
 }
