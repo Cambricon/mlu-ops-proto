@@ -163,9 +163,6 @@ enum ReduceMode {
 
 message RuntimeEnvironment {
   required string dl_framework  =  1;
-  optional int32  cudnn_version =  2;
-  required string gpu_name      =  3;
-  required string cuda_version  =  4;
 }
 
 message Shape {
