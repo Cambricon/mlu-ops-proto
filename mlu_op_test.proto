@@ -255,6 +255,7 @@ enum OpType {
   DYNAMIC_POINT_TO_VOXEL_BACKWARD = 404;
   DYNAMIC_POINT_TO_VOXEL_FORWARD = 405;
   EXPAND = 5;
+  FFT = 65536; 
   FILL = 13199;
   FOCAL_LOSS_SIGMOID_BACKWARD = 12322;
   FOCAL_LOSS_SIGMOID_FORWARD = 15000;
@@ -420,6 +421,7 @@ message Node {
   optional ConcatParam        concat_param = 54;         // param 
   optional OpTensorParam      op_tensor_param = 101;     // OpTensorParam
   optional BatchMatMulBCastParam batch_matmul_bcast_param       = 132;   // param
+  optional FFTParam fft_param = 65536; // param
 }
 
 
@@ -1089,6 +1091,14 @@ enum PoolingForwardMode {
   POOLING_AVERAGE_COUNT_EXCLUDE_PADDING = 2;
   POOLING_FIXED = 3;
 }
+
+// param to call cnnlExecFFT()
+message FFTParam { 
+  optional int32 rank = 1 [default = 1]; 
+  repeated int32 n = 2; 
+  optional int32 direction = 3 [default = 0]; 
+  optional float scale_factor = 4 [default = 1.0]; 
+} 
 
 // param to call mluOpRoiPoolingForward()
 message RoiPoolingForwardParam {
