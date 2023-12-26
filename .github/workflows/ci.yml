@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: update_image
         run: |
-          docker pull docker-user.extrotec.com:30080/mlu-ops/mluops_ci:latest-devel-x86_64-ubuntu18.04
+          docker pull docker-user.extrotec.com:30080/mlu-ops/mluops_ci:devel-x86_64-ubuntu18.04-cntoolkit3.7.0-cnnl1.21.1
       - name: get_mluops
         run: |
           for i in {1..20}; do git clone https://github.com/Cambricon/mlu-ops.git --depth 1 && break || sleep 5; done
@@ -21,7 +21,7 @@ jobs:
           cp mlu_op_test.proto mlu-ops/bangc-ops/test/mlu_op_gtest/pb_gtest/mlu_op_test_proto
       - name: build_mluops
         run: >
-          docker run --rm -v $(pwd):/work -w /work docker-user.extrotec.com:30080/mlu-ops/mluops_ci:latest-devel-x86_64-ubuntu18.04
+          docker run --rm -v $(pwd):/work -w /work docker-user.extrotec.com:30080/mlu-ops/mluops_ci:devel-x86_64-ubuntu18.04-cntoolkit3.7.0-cnnl1.21.1
           bash -c "cd mlu-ops && bash build.sh --sub_module=bangc"
       - name: clean
         run: |
