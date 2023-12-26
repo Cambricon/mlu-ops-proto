@@ -324,6 +324,7 @@ enum OpType {
   VOXEL_POOLING_FORWARD = 2200;
   VOXELIZATION = 2203;
   YOLO_BOX = 2500;
+  DCN_BACKWARD_DATA = 407;
 }
 
 message Node {
@@ -422,6 +423,7 @@ message Node {
   optional OpTensorParam      op_tensor_param = 101;     // OpTensorParam
   optional BatchMatMulBCastParam batch_matmul_bcast_param       = 132;   // param
   optional FFTParam fft_param = 65536; // param
+  optional DCNParam dcn_param       = 405;
 }
 
 
@@ -1152,4 +1154,15 @@ message BatchMatMulBCastParam {
   optional float beta = 7 [default = 0.0];
   optional MatMulCastMode cast_mode = 8 [default = MLUOP_MATMUL_BYPASS_QUANTIZE];
   optional bool use_stride = 9 [default = false];
+}
+
+message DCNParam {
+  required int32 dimnb = 1;
+  repeated int32 pad = 2;
+  repeated int32 stride = 3;
+  repeated int32 dilation = 4;
+  optional int32 deformable_group = 5 [default = 1];
+  optional int32 conv_group = 6 [default = 1];
+  optional int32 im2col_step = 7;
+  optional DataType compute_type = 8;
 }
