@@ -252,8 +252,8 @@ enum OpType {
   DEFORM_ROI_POOL_FORWARD = 10126;
   DIFF_IOU_ROTATED_SORT_VERTICES_FORWARD = 402;
   DIV = 2020;
-  DYNAMIC_POINT_TO_VOXEL_BACKWARD = 404;
-  DYNAMIC_POINT_TO_VOXEL_FORWARD = 405;
+  DYNAMIC_POINT_TO_VOXEL_BACKWARD = 404111;
+  DYNAMIC_POINT_TO_VOXEL_FORWARD = 405111;
   EXPAND = 5;
   FFT = 65536; 
   FILL = 13199;
@@ -324,6 +324,8 @@ enum OpType {
   VOXEL_POOLING_FORWARD = 2200;
   VOXELIZATION = 2203;
   YOLO_BOX = 2500;
+  DCN_FORWARD = 405;
+  DCN_BACKWARDWEIGHT = 406;
   DCN_BACKWARD_DATA = 407;
 }
 
@@ -766,6 +768,18 @@ message PriorBoxParam {
   required float step_h                     = 8 [default = 0.0];
   required float offset                     = 9 [default = 0.5];
   required bool min_max_aspect_ratios_order = 10 [default = true];
+}
+
+// param to call mluOpDCNForward and mluOpDCNBackwardWeight()
+message DCNParam {
+    required int32 dimnb = 1;
+    repeated int32 pad = 2;
+    repeated int32 stride = 3;
+    repeated int32 dilation = 4;
+    optional int32 deformable_group = 5 [default = 1];
+    optional int32 conv_group = 6 [default = 1];
+    optional int32 im2col_step = 7;
+    optional DataType compute_type = 8;
 }
 
 // param to call mluOpSyncBatchNormStats, mluOpSyncBatchNormGatherStatsWithCounts
