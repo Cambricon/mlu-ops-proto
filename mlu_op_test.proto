@@ -320,6 +320,7 @@ enum OpType {
   YOLO_BOX = 2500;
   DCN_FORWARD = 405;
   DCN_BACKWARDWEIGHT = 406;
+  
 }
 
 message Node {
