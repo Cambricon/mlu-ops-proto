@@ -11,10 +11,18 @@
      ```
 
    - prefix：新增功能 [Feature] ，修 bug [Fix]，文档相关 [Docs] ，开发中 [WIP] （暂时不会被 review）
+
+     跟具体算子相关修改
      ```
-     [Feature](bangc-ops): Revise code type.
-     [Fix](bangc-ops): Fix div bug.
-     [Docs](bangc-ops): Add div doc.
+     [Feature](mluOpXXX): Revise code type.
+     [Fix](mluOpXXX): Fix div bug.
+     [Docs](mluOpXXX): Add div doc.
+     ```
+     跟公共模块相关修改
+     ```
+     [Feature](mlu-ops): Revise code type.
+     [Fix](mlu-ops): Fix div bug.
+     [Docs](mlu-ops): Add div doc.
      ```
 
-   - 更多见 [PR 规范.md]([docs/bangpy-docs/BANGPy-OPS-Operator-Development-Process.md](https://github.com/Cambricon/mlu-ops/blob/master/docs/pr)) 
+   - 更多见 [PR 规范.md](https://github.com/Cambricon/mlu-ops/blob/master/docs/Pull-Request.md)
