@@ -7,7 +7,7 @@ on:
     
 jobs:
   test:
-    runs-on: mlu290-m5
+    runs-on: mlu370-m8
     steps:
       - uses: actions/checkout@v3
       - name: update_image
