@@ -239,6 +239,7 @@ enum OpType {
   ABS = 2022;
   ACTIVE_ROTATED_FILTER_FORWARD = 257073;
   ADDN = 7178;
+  ADAMW = 7979;
   BALL_QUERY = 20231025;
   BATCH_MATMUL_BCAST  = 2049;
   BBOX_OVERLAPS = 2041;
@@ -361,6 +362,7 @@ message Node {
 
   optional ConvolutionForwardParam  convolution_forward_param  = 23;
   optional AddNParam   addn_param                               = 104;    // param
+  optional AdamWParam adamw_param                               = 403505; // param
   optional TransposeParam transpose_param                       = 62;     // param
   optional ScatterNdParam scatter_nd_param                      = 117;    // param
   optional UniqueParam unique_param                             = 9111;   // param
@@ -470,6 +472,20 @@ message RandomData {
   optional RandomDistribution distribution = 4 [default = UNIFORM];
   optional bool convert_dtype = 5 [default = false];  // convert float to int
 }
+
+// param of AdamW
+message AdamWParam {
+  required float lr    = 1 [default = 0.01];
+  required float beta1 = 2 [default = 0.4];
+  required float beta2 = 3 [default = 0.4];
+  required float bias1 = 4 [default = 0.6];
+  required float bias2 = 5 [default = 0.6];
+  required float epsilon = 6 [default = 0.1];
+  required float weight_decay = 7 [default = 0];
+  required float scale = 8 [default = 1];
+  optional bool use_nesterov = 9 [default = false];
+}
+
 
 // remove this param later
 message TestParam {
