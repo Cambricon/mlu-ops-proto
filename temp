@@ -267,7 +267,6 @@ enum OpType {
   INDICE_CONVOLUTION_BACKWARD_FILTER = 901;
   INDICE_CONVOLUTION_FORWARD = 902;
   LOG = 20333;
-  LOGSPACE = 29299;
   MASKED_COL2IM_FORWARD = 2201;
   MASKED_IM2COL_FORWARD = 2202;
   MATMUL = 536470911;
@@ -303,10 +302,11 @@ enum OpType {
   ROIPOINT_POOL3D = 16002;
   ROTATED_FEATURE_ALIGN_BACKWARD = 20221008;
   ROTATED_FEATURE_ALIGN_FORWARD = 20229510;
+  SCATTER_ND = 359;
   SQRT = 2021;
   SQRT_BACKWARD = 55660;
   STRIDED_SLICE = 657;
-  SYNC_BATCHNORM_BACKWARD_ELEMT = 1663;
+  SYNC_BATCH_NORM_BACKWARD_ELEMT = 1663;
   SYNC_BATCHNORM_BACKWARD_ELEMT_V2 = 1664;
   SYNC_BATCHNORM_BACKWARD_REDUCE = 38324;
   SYNC_BATCHNORM_ELEMT = 1662;
@@ -327,7 +327,6 @@ enum OpType {
   DCN_FORWARD = 4051;
   DCN_BACKWARD_WEIGHT = 406;
   DCN_BACKWARD_DATA = 407;
-  LGAMMA = 20243500;
 }
 
 message Node {
@@ -363,11 +362,11 @@ message Node {
   optional ConvolutionForwardParam  convolution_forward_param  = 23;
   optional AddNParam   addn_param                               = 104;    // param
   optional AdamWParam adamw_param                               = 403505; // param
+  optional ScatterNdParam scatter_nd_param                      = 117;    // param
   optional UniqueParam unique_param                             = 9111;   // param
   optional DivParam    div_param                                = 4001;   // param
   optional ReduceParam reduce_param                             = 85;     // param
   optional LogParam    log_param                                = 4002;   // param
-  optional LogspaceParam logspace_param                         = 20240307; //param
   optional SqrtParam   sqrt_param                               = 4003;   // param
   optional PsRoiPoolForwardParam psroipool_forward_param        = 4004;   // param
   optional PsRoiPoolBackwardParam psroipool_backward_param      = 4005;   // param
@@ -427,8 +426,6 @@ message Node {
   optional BatchMatMulBCastParam batch_matmul_bcast_param       = 132;   // param
   optional FFTParam fft_param = 65536; // param
   optional DCNParam dcn_param       = 405;
-  optional LogcumsumexpParam logcumsumexp_param       = 19980423;
-  optional LgammaParam lgamma_param = 202435;
   optional CholeskyParam cholesky_param = 618323;  // CholeskyParam
 }
 
@@ -627,6 +624,11 @@ message BorderAlignParam {
   optional int32 pool_size = 1[default = 10];
 }
 
+message ScatterNdParam {
+  optional int32 version = 1 [default = 1];
+  optional ScatterNdMode mode = 2 [default = SCATTERND_ADD];
+}
+
 enum UniqueSort {
   UNIQUE_UNSORT_FORWARD = 0;
   UNIQUE_SORT_ASCEND = 1;
@@ -645,14 +647,6 @@ message UniqueParam {
 message LogParam {
   required mluOpLogBase log_base        = 1 [default = MLUOP_LOG_E];
   optional ComputationPreference prefer = 2 [default = COMPUTATION_HIGH_PRECISION];
-}
-
-// param to call mluOpLogspace()
-message LogspaceParam {
-  required float start        = 1 [default = 1.0];
-  required float end        = 2 [default = 3.0];
-  required int64 steps        = 3 [default = 1024];
-  required float base        = 4 [default = 10.0];
 }
 
 // param to call mluOpNms()
@@ -1183,14 +1177,6 @@ message DCNParam {
   optional int32 conv_group = 6 [default = 1];
   optional int32 im2col_step = 7;
   optional DataType compute_type = 8;
-}
-
-// param to call mluOpLogcumsumexp()
-message LogcumsumexpParam {
-  optional int32 dim = 1 [default = 0];
-}
-message LgammaParam {
-  optional bool inplace = 1 [default = false];
 }
 
 //param to call mluOpCholesky()
