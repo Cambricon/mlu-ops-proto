@@ -327,6 +327,7 @@ enum OpType {
   DCN_FORWARD = 4051;
   DCN_BACKWARD_WEIGHT = 406;
   DCN_BACKWARD_DATA = 407;
+  RANDOM_UNIFORM = 0527;
 }
 
 message Node {
@@ -426,6 +427,7 @@ message Node {
   optional BatchMatMulBCastParam batch_matmul_bcast_param       = 132;   // param
   optional FFTParam fft_param = 65536; // param
   optional DCNParam dcn_param       = 405;
+  optional RandomUniformParam random_uniform_param = 0527;
 }
 
 
@@ -1176,4 +1178,11 @@ message DCNParam {
   optional int32 conv_group = 6 [default = 1];
   optional int32 im2col_step = 7;
   optional DataType compute_type = 8;
+}
+
+message RandomUniformParam {
+  optional uint64 seed = 1 [default = 0];
+  optional uint64 offset = 2 [default = 0];
+  optional float min = 3 [default = 0];
+  optional float max = 4 [default = 2];
 }
