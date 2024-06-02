@@ -1177,3 +1177,8 @@ message DCNParam {
   optional int32 im2col_step = 7;
   optional DataType compute_type = 8;
 }
+
+// param to call mluOpLogcumsumexp()
+message LCSEParam {
+  optional int32 dim = 1 [default = 0];
+}
