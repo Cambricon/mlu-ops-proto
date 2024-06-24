@@ -426,7 +426,7 @@ message Node {
   optional BatchMatMulBCastParam batch_matmul_bcast_param       = 132;   // param
   optional FFTParam fft_param = 65536; // param
   optional DCNParam dcn_param       = 405;
-  optional LogcumsumexpParam logcumsumexp_param       = 998;
+  optional LogcumsumexpParam logcumsumexp_param       = 19980423;
 }
 
 
