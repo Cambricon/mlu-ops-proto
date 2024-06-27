@@ -426,6 +426,7 @@ message Node {
   optional BatchMatMulBCastParam batch_matmul_bcast_param       = 132;   // param
   optional FFTParam fft_param = 65536; // param
   optional DCNParam dcn_param       = 405;
+  optional LogcumsumexpParam logcumsumexp_param       = 19980423;
 }
 
 
@@ -1176,4 +1177,9 @@ message DCNParam {
   optional int32 conv_group = 6 [default = 1];
   optional int32 im2col_step = 7;
   optional DataType compute_type = 8;
+}
+
+// param to call mluOpLogcumsumexp()
+message LogcumsumexpParam {
+  optional int32 dim = 1 [default = 0];
 }
