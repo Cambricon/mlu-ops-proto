@@ -302,7 +302,6 @@ enum OpType {
   ROIPOINT_POOL3D = 16002;
   ROTATED_FEATURE_ALIGN_BACKWARD = 20221008;
   ROTATED_FEATURE_ALIGN_FORWARD = 20229510;
-  SCATTER_ND = 359;
   SQRT = 2021;
   SQRT_BACKWARD = 55660;
   STRIDED_SLICE = 657;
@@ -362,7 +361,6 @@ message Node {
   optional ConvolutionForwardParam  convolution_forward_param  = 23;
   optional AddNParam   addn_param                               = 104;    // param
   optional AdamWParam adamw_param                               = 403505; // param
-  optional ScatterNdParam scatter_nd_param                      = 117;    // param
   optional UniqueParam unique_param                             = 9111;   // param
   optional DivParam    div_param                                = 4001;   // param
   optional ReduceParam reduce_param                             = 85;     // param
@@ -622,11 +620,6 @@ message AddNParam {
 
 message BorderAlignParam {
   optional int32 pool_size = 1[default = 10];
-}
-
-message ScatterNdParam {
-  optional int32 version = 1 [default = 1];
-  optional ScatterNdMode mode = 2 [default = SCATTERND_ADD];
 }
 
 enum UniqueSort {
