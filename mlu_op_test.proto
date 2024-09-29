@@ -267,6 +267,7 @@ enum OpType {
   INDICE_CONVOLUTION_BACKWARD_FILTER = 901;
   INDICE_CONVOLUTION_FORWARD = 902;
   LOG = 20333;
+  LOGSPACE = 29299;
   MASKED_COL2IM_FORWARD = 2201;
   MASKED_IM2COL_FORWARD = 2202;
   MATMUL = 536470911;
@@ -365,6 +366,7 @@ message Node {
   optional DivParam    div_param                                = 4001;   // param
   optional ReduceParam reduce_param                             = 85;     // param
   optional LogParam    log_param                                = 4002;   // param
+  optional LogspaceParam logspace_param                         = 20240307; //param
   optional SqrtParam   sqrt_param                               = 4003;   // param
   optional PsRoiPoolForwardParam psroipool_forward_param        = 4004;   // param
   optional PsRoiPoolBackwardParam psroipool_backward_param      = 4005;   // param
@@ -641,6 +643,14 @@ message UniqueParam {
 message LogParam {
   required mluOpLogBase log_base        = 1 [default = MLUOP_LOG_E];
   optional ComputationPreference prefer = 2 [default = COMPUTATION_HIGH_PRECISION];
+}
+
+// param to call mluOpLogspace()
+message LogspaceParam {
+  required float start        = 1 [default = 1.0];
+  required float end        = 2 [default = 3.0];
+  required int64 steps        = 3 [default = 1024];
+  required float base        = 4 [default = 10.0];
 }
 
 // param to call mluOpNms()
