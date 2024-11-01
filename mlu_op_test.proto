@@ -327,6 +327,7 @@ enum OpType {
   DCN_FORWARD = 4051;
   DCN_BACKWARD_WEIGHT = 406;
   DCN_BACKWARD_DATA = 407;
+  LGAMMA = 20243500;
 }
 
 message Node {
