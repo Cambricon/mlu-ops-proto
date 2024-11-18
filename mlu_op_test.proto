@@ -1196,5 +1196,5 @@ message LgammaParam {
 //param to call mluOpCholesky()
 message CholeskyParam {
   optional bool upper = 1 [default = false];
-}
+} 
 
