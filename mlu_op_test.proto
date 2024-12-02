@@ -427,7 +427,7 @@ message Node {
   optional OpTensorParam      op_tensor_param = 101;     // OpTensorParam
   optional BatchMatMulBCastParam batch_matmul_bcast_param       = 132;   // param
   optional FFTParam fft_param = 65536; // param
-  optional Sgetrf2Param sgetrf2_param = 65537 ;//param
+  optional XgetrfParam xgetrf_param = 65537 ;//param
   optional DCNParam dcn_param       = 405;
   optional LogcumsumexpParam logcumsumexp_param       = 19980423;
   optional LgammaParam lgamma_param = 202435;
@@ -1121,8 +1121,8 @@ message FFTParam {
   optional float scale_factor = 4 [default = 1.0]; 
 } 
 
-// param to call Sgetrf2()
-message Sgetrf2Param { 
+// param to call Xgetrf()
+message XgetrfParam { 
   optional int32 mode =1 [default = 1]; 
 }
 
