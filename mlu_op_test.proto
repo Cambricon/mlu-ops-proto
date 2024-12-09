@@ -101,6 +101,7 @@ enum MLUPlatform {
   MLU200 = 1;
   MLU370 = 2;
   MLU590 = 4;
+  MTP613 = 6;
 }
 
 enum PointerMode {
