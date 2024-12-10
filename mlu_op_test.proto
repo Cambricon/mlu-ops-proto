@@ -328,6 +328,7 @@ enum OpType {
   DCN_BACKWARD_WEIGHT = 406;
   DCN_BACKWARD_DATA = 407;
   LGAMMA = 20243500;
+  CHOLESKY = 6183230;
 }
 
 message Node {
