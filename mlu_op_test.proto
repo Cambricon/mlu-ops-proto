@@ -360,6 +360,7 @@ message Node {
   optional HandleParam handle_param                   = 23451;
 
   extensions 3000 to 4000;
+  extensions 99000 to 100000;
 
   optional ConvolutionForwardParam  convolution_forward_param  = 23;
   optional AddNParam   addn_param                               = 104;    // param
