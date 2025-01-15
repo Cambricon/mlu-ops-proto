@@ -159,7 +159,7 @@ enum ActivationMode{
 enum ReduceMode {
   REDUCE_MODE_SUM = 0;
   REDUCE_MODE_MEAN = 1;
-  REDUCE_MODE_MAX = 2; 
+  REDUCE_MODE_MAX = 2;
 }
 
 message RuntimeEnvironment {
@@ -257,7 +257,7 @@ enum OpType {
   DYNAMIC_POINT_TO_VOXEL_BACKWARD = 404;
   DYNAMIC_POINT_TO_VOXEL_FORWARD = 405;
   EXPAND = 5;
-  FFT = 65536; 
+  FFT = 65536;
   FILL = 13199;
   FOCAL_LOSS_SIGMOID_BACKWARD = 12322;
   FOCAL_LOSS_SIGMOID_FORWARD = 15000;
@@ -360,7 +360,7 @@ message Node {
   optional HandleParam handle_param                   = 23451;
 
   extensions 3000 to 4000;
-  extensions 99000 to 100000;
+  // extensions 99000 to 100000;
 
   optional ConvolutionForwardParam  convolution_forward_param  = 23;
   optional AddNParam   addn_param                               = 104;    // param
@@ -424,7 +424,7 @@ message Node {
   optional SyncBatchNormParam sync_batchnorm_gather_stats_with_counts_param = 11113;  // param
   optional SyncBatchNormBackwardParam sync_batchnorm_backward_reduce_param = 38324;  // param
   optional StridedSliceParam  strided_slice_param = 44;  // param
-  optional ConcatParam        concat_param = 54;         // param 
+  optional ConcatParam        concat_param = 54;         // param
   optional OpTensorParam      op_tensor_param = 101;     // OpTensorParam
   optional BatchMatMulBCastParam batch_matmul_bcast_param       = 132;   // param
   optional FFTParam fft_param = 65536; // param
@@ -1114,12 +1114,12 @@ enum PoolingForwardMode {
 }
 
 // param to call cnnlExecFFT()
-message FFTParam { 
-  optional int32 rank = 1 [default = 1]; 
-  repeated int32 n = 2; 
-  optional int32 direction = 3 [default = 0]; 
-  optional float scale_factor = 4 [default = 1.0]; 
-} 
+message FFTParam {
+  optional int32 rank = 1 [default = 1];
+  repeated int32 n = 2;
+  optional int32 direction = 3 [default = 0];
+  optional float scale_factor = 4 [default = 1.0];
+}
 
 // param to call mluOpRoiPoolingForward()
 message RoiPoolingForwardParam {
