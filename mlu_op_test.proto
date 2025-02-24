@@ -329,6 +329,7 @@ enum OpType {
   DCN_BACKWARD_WEIGHT = 406;
   DCN_BACKWARD_DATA = 407;
   LGAMMA = 20243500;
+  CHOLESKY = 6183230;
 }
 
 message Node {
@@ -430,6 +431,7 @@ message Node {
   optional DCNParam dcn_param       = 405;
   optional LogcumsumexpParam logcumsumexp_param       = 19980423;
   optional LgammaParam lgamma_param = 202435;
+  optional CholeskyParam cholesky_param = 618323;  // CholeskyParam
 }
 
 
@@ -1187,3 +1189,9 @@ message LogcumsumexpParam {
 message LgammaParam {
   optional bool inplace = 1 [default = false];
 }
+
+//param to call mluOpCholesky()
+message CholeskyParam {
+  optional bool upper = 1 [default = false];
+} 
+
