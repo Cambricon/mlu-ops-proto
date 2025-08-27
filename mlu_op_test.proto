@@ -73,6 +73,11 @@ enum DataType {
   DTYPE_COMPLEX_HALF  = 18;   // complex dtype of half precision
   DTYPE_COMPLEX_FLOAT  = 19;   // complex dtype of float precision
   DTYPE_COMPLEX_DOUBLE = 20;   // complex dtype of double precision
+  DTYPE_FLOAT8_E4M3FN = 21;
+  DTYPE_FLOAT8_E5M2 = 22;
+  DTYPE_INT4X2 = 23;
+  DTYPE_FLOAT8_E8M0FNU = 24;
+  DTYPE_INT8_Q1_6 = 25;
   DTYPE_UNSET = 0;
 }
 
@@ -208,6 +213,44 @@ message Tensor {
   optional PointerMode pointer_mode = 29 [default = POINTER_MODE_DEVICE];
   // is_cpu_scalar is true when shape is (), value num is 1. redudant information for debug
   optional bool is_cpu_scalar = 30 [default = false];
+}
+
+enum ScalingType {
+    SCALING_TYPE_DYNAMIC = 0;
+    SCALING_TYPE_STATIC = 1;
+    // SCALING_TYPE_DELAYED = 2;
+    // SCALING_TYPE_DISABLED = 3;
+}
+enum MappingType {
+    MAPPING_TYPE_SYMMETRIC = 0; // Commonly used to quantize to signed numbers. symmetric mapping means floating
+                                // point range is symmetrically mapped to integer range
+                                // let's say we have floating point range (-3.5, 10.2) and integer range (-8, 7) (int4)
+    						    // we'll use (-10.2, 10.2) as the range for floating point and map that to (-8, 7)
+    							// e.g. scale = (10.2 - (-10.2)) / (7 - (-8))
+    MAPPING_TYPE_ASYMMETRIC = 1; // Commonly used to quantize to unsigned numbers. asymmetric mapping means we just
+                                 // directly map the floating point range to integer range,
+    							 // for the above example, we will map (-3.5, 10.2) to (-8, 7) and calculate quantization
+    							 //	parameter based on this mapping e.g. scale = (10.2 - (-3.5)) / (7 - (-8))
+    // MAPPING_TYPE_SYMMETRIC_NO_CLIPPING_ERR = 2;
+}
+enum ZeroPointDomain {
+    ZERO_POINT_DOMAIN_NONE = 0;
+    ZERO_POINT_DOMAIN_INT = 1;
+    ZERO_POINT_DOMAIN_FLOAT = 2;
+}
+message QuantizedTensor {
+  required string name    = 1 [default = "unknown"];    //
+  optional ScalingType scaling_type = 2; // dynamic or static. See https://arxiv.org/pdf/2209.05433.pdf, Section 4.3 for more details.
+  required Shape block_size = 3; // granularity of quantization, this means the size of the tensor elements that's sharing the same qparam e.g. when size is the same as the input tensor dimension, we are using per tensor quantization
+  optional float quant_min = 4; // minimum quantized value for the Tensor, if not specified, it will be derived from dtype of `int_data`
+  optional float quant_max = 5; // maximum quantized value for the Tensor, if not specified, it will be derived from dtype of `int_data`
+  optional MappingType mapping_type = 6; // symmetric quantization or asymmetric quantization
+  optional ZeroPointDomain zero_point_domain = 7; // the domain that zero_point is in, should be either integer or float
+                        // if zero_point is in integer domain, zero point is added to the quantized integer value during quantization
+                        // if zero_point is in floating point domain, zero point is subtracted from the floating point (unquantized) value during quantization default is ZeroPointDomain.INT
+ required Tensor data    =  8;
+ required Tensor scale    = 9;
+ optional Tensor zero_point = 10;
 }
 
 message SeqData {
@@ -355,6 +398,8 @@ message Node {
   optional double workspace_size                      = 18;
   repeated double threshold_rate                      = 21;   // determine the magnification of dynamic threshold
   repeated MLUPlatform supported_mlu_platform         = 22;
+  repeated QuantizedTensor quantized_input            = 26;
+  repeated QuantizedTensor quantized_output           = 27;
   optional RuntimeEnvironment runtime_env             = 37;
 
   optional HandleParam handle_param                   = 23451;
@@ -1187,3 +1232,4 @@ message LogcumsumexpParam {
 message LgammaParam {
   optional bool inplace = 1 [default = false];
 }
+
