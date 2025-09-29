@@ -213,6 +213,7 @@ message Tensor {
   optional PointerMode pointer_mode = 29 [default = POINTER_MODE_DEVICE];
   // is_cpu_scalar is true when shape is (), value num is 1. redudant information for debug
   optional bool is_cpu_scalar = 30 [default = false];
+  optional int32 index = 31; // index in tensor list
 }
 
 enum ScalingType {
