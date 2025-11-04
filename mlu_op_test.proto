@@ -532,6 +532,7 @@ message AdamWParam {
   required float weight_decay = 7 [default = 0];
   required float scale = 8 [default = 1];
   optional bool use_nesterov = 9 [default = false];
+  optional bool need_remove_nan = 10 [default = false];
 }
 
 
