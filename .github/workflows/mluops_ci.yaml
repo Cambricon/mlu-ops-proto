@@ -20,4 +20,4 @@ jobs:
 
       - name: run_mlu_ops_ci
         run: >
-          bash .github/ci_script/mlu-ops-ci_script.sh
+          bash .github/ci_script/invoke_ci_test.sh
