@@ -23,7 +23,7 @@
 syntax = "proto2";
 package mluoptest;
 
-// mluOpTensorLayout_t;
+// mluOpTensorLayout_t
 enum TensorLayout {
   LAYOUT_NCHW  = 1;
   LAYOUT_NHWC  = 2;
