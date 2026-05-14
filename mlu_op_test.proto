@@ -378,6 +378,7 @@ enum OpType {
   DCN_BACKWARD_DATA = 407;
   CONCAT = 411;
   LGAMMA = 20243500;
+  CONCAT = 411;
 }
 
 message Node {
