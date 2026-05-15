@@ -376,10 +376,9 @@ enum OpType {
   DCN_FORWARD = 4051;
   DCN_BACKWARD_WEIGHT = 406;
   DCN_BACKWARD_DATA = 407;
-  CONCAT = 411;
   LGAMMA = 20243500;
-  CONCAT = 411;
-}
+  CONCAT = 77;  // cnnlConcat()
+  SPLIT  = 78;   // cnnlSplit()}
 
 message Node {
   optional string valid                               = 1 [default = "True"];
