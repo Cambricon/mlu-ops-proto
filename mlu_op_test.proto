@@ -493,6 +493,8 @@ enum RandomDistribution {
   DISCRETE_UNIFORM  = 5;
   CERTAIN           = 6;
   UNIQUE_INDEX      = 7;
+  LOG_UNIFORM       = 8;
+  ARANGE_DISTRIBUTION = 9;
 }
 
 message RandomData {
