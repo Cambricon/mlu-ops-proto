@@ -500,6 +500,13 @@ enum RandomDistribution {
   UNIQUE_INDEX      = 7;
   LOG_UNIFORM       = 8;
   ARANGE_DISTRIBUTION = 9;
+  GAUSSIAN_MIXTURE  = 10;
+}
+
+message GaussianComponent {
+  optional double mean   = 1;
+  optional double stddev = 2;
+  optional double weight = 3;
 }
 
 message RandomData {
@@ -524,6 +531,8 @@ message RandomData {
   optional int32 dim_shape                 = 15 [default = 1];
   optional float negative_ratio            = 16 [default = 0];
   optional int32 sorted_status             = 17 [default = 0];
+  // only for gaussain_mixture
+  repeated GaussianComponent gauss_comp    = 18;
 
   optional RandomDistribution distribution = 4 [default = UNIFORM];
   optional bool convert_dtype = 5 [default = false];  // convert float to int
