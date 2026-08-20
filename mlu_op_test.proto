@@ -22,7 +22,7 @@
  *************************************************************************/
 syntax = "proto2";
 package mluoptest;
-
+"test ci"
 // mluOpTensorLayout_t;
 enum TensorLayout {
   LAYOUT_NCHW  = 1;
