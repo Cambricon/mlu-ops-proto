@@ -379,6 +379,7 @@ enum OpType {
   LGAMMA = 20243500;
   CONCAT = 77;
   SPLIT  = 78;
+  BOX_OVERLAP_BEV = 213507;
 }
 
 message Node {
