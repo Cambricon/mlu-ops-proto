@@ -534,6 +534,19 @@ message RandomData {
   optional int32 sorted_status             = 17 [default = 0];
   // only for gaussain_mixture
   repeated GaussianComponent gauss_comp    = 18;
+  // post-process: after the distribution fills the data, randomly overwrite
+  // nan_ratio/inf_ratio/neg_inf_ratio fractions of elements
+  // (FLOAT/DOUBLE/HALF/BFLOAT16 only; float8 is rejected)
+  optional float nan_ratio = 19 [default = 0.0];
+  optional float inf_ratio = 20 [default = 0.0];
+  optional float neg_inf_ratio = 21 [default = 0.0];
+  // only for arange: lower/upper are start/stop (no ordering constraint).
+  // With step set to a finite value (any sign) stop is ignored:
+  // v[i] = lower_bound + i * step, the element-wise formula of numpy.arange
+  // (https://numpy.org/doc/stable/reference/generated/numpy.arange.html);
+  // step = nan derives count points from the closed
+  // [lower_bound, upper_bound] interval (numpy.linspace semantics)
+  optional double step = 22 [default = 1.0];
 
   optional RandomDistribution distribution = 4 [default = UNIFORM];
   optional bool convert_dtype = 5 [default = false];  // convert float to int
